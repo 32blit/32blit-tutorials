@@ -67,6 +67,10 @@ These ideas will not come when you bid them to. They’ll appear at odd points. 
 10. [Raycasting](c++/10-raycasting/README.md)
 11. [Demo Effects](c++/11-demo-effects/README.md)
 12. [Integrating Lua Scripts](c++/12-integrating-lua-scripts/README.md)
+Appendix A: [Case Study: Rainbow Ascent](case-studies/rainbow-ascent/README.md)
+Appendix B: [Case Study: Rocks 'n' Diamonds](case-studies/rocks-n-diamonds/README.md)
+Appexdix C: [Tutorial: Super Simple Snake](https://github.com/32blit/snake)
+
 
 ### Lua
 
