@@ -70,6 +70,7 @@ These ideas will not come when you bid them to. They’ll appear at odd points. 
 
 ### Lua
 
+0. [Getting Started](lua/00-getting-started/README.md)
 1. [Drawing Shapes](lua/01-drawing-shapes/README.md)
 2. [Working With Sprites](lua/02-working-with-sprites/README.md)
 3. [Processing Input](lua/03-processing-input/README.md)
