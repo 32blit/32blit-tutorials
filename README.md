@@ -74,6 +74,7 @@ Appexdix C: [Tutorial: Super Simple Snake](https://github.com/32blit/snake)
 
 ### Lua
 
+0. [Getting Started](lua/00-getting-started/README.md)
 1. [Drawing Shapes](lua/01-drawing-shapes/README.md)
 2. [Working With Sprites](lua/02-working-with-sprites/README.md)
 3. [Processing Input](lua/03-processing-input/README.md)
