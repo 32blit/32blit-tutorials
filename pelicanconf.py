@@ -3,8 +3,9 @@ SITENAME = "32Blit Tutorials"
 SITESUBTITLE = 'Lua and C++ Tutorials for the 32Blit handheld.'
 SITEURL = 'https://32blit.github.io/32blit-tutorials/'
 TIMEZONE = "Europe/London"
-SITELOGO = 'static/logo.png'
-FAVICON = 'static/favicon.png'
+# These are not automatically prefixed with the SITEURL for some reason
+SITELOGO = SITEURL + 'static/logo.png' 
+FAVICON = SITEURL + 'static/favicon.png'
 CUSTOM_CSS = 'static/custom.css'
 
 THEME = 'Flex'
