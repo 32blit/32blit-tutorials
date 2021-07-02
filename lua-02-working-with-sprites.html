@@ -148,7 +148,7 @@
 <h2 id="preparing-sprites-for-32blit-lua">Preparing Sprites For 32Blit Lua</h2>
 <p>Once you have your 128x128 pixel spritesheet, you must prepare it for loading on 32Blit. If you used the 32Blit Sprite Editor then - good news - the <code>.bmp</code> output file is compatible with 32Blit Lua and you can just load it right up without any preparation, skip to the next step!</p>
 <p>If you created your spritesheet using another application, found one online or are using one of the 32Blit SDK spritesheets you'll need to convert it using the 32Blit tools:</p>
-<div class="highlight"><pre><span></span><code><span class="err">32blit image --input_type image --input_file spritesheet.bmp --output_file spritesheet.bin</span>
+<div class="highlight"><pre><span></span><code><span class="mf">32</span><span class="n">blit</span> <span class="n">image</span> <span class="o">--</span><span class="kr">input</span><span class="n">_type</span> <span class="n">image</span> <span class="o">--</span><span class="kr">input</span><span class="n">_file</span> <span class="n">spritesheet</span><span class="mf">.</span><span class="n">bmp</span> <span class="o">--</span><span class="n">output_file</span> <span class="n">spritesheet</span><span class="mf">.</span><span class="n">bin</span>
 </code></pre></div>
 
 <p>This tells the tools to pack an image - <code>spritesheet.bmp</code> - into a packed, 32Blit spritesheet file - <code>spritesheet.bin</code>.</p>
