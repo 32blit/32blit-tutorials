@@ -18,7 +18,7 @@ MAIN_MENU = True
 RELATIVE_URLS = False
 
 GITHUB_URL = 'http://github.com/32blit/'
-DISQUS_SITENAME = "blog-32blittutorials"
+DISQUS_SITENAME = ''
 REVERSE_CATEGORY_ORDER = True
 LOCALE = "C"
 DEFAULT_PAGINATION = 4
@@ -34,9 +34,9 @@ SOCIAL = (('twitter', 'http://twitter.com/32blit'),
           ('github', 'http://github.com/32blit'),)
 
 MENUITEMS = (
-    ("Lua Tutorials", "/category/lua.html"),
-    ("C++ Tutorials", "/category/c.html"),
-    ("Case Studies", "/category/case-studies.html"),
+    ("Lua Tutorials", "/32blit-tutorials/category/lua.html"),
+    ("C++ Tutorials", "/32blit-tutorials/category/c.html"),
+    ("Case Studies", "/32blit-tutorials/category/case-studies.html"),
 )
 
 # global metadata to all the contents
