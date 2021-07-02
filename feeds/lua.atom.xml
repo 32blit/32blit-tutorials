@@ -67,7 +67,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;And it will show up in the launcher like this:&lt;/p&gt;
-&lt;p&gt;&lt;img alt="Locating helloworld.lua in the 32Blit launcher" src="launch-hello-world-lua.png" /&gt;&lt;/p&gt;</content><category term="Lua"></category><category term="lua"></category></entry><entry><title>Lua 1. Drawing Shapes</title><link href="https://32blit.github.io/32blit-tutorials/lua-01-drawing-shapes.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/lua-01-drawing-shapes.html</id><summary type="html">&lt;p&gt;Drawing shapes with Lua on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;p&gt;&lt;img alt="Locating helloworld.lua in the 32Blit launcher" src="launch-hello-world-lua.png" /&gt;&lt;/p&gt;</content><category term="Lua"></category><category term="lua"></category><category term="tutorial"></category></entry><entry><title>Lua 1. Drawing Shapes</title><link href="https://32blit.github.io/32blit-tutorials/lua-01-drawing-shapes.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/lua-01-drawing-shapes.html</id><summary type="html">&lt;p&gt;Drawing shapes with Lua on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;a href="#introduction"&gt;Introduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#drawing-rectangles"&gt;Drawing Rectangles&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#drawing-circles"&gt;Drawing Circles&lt;/a&gt;&lt;/li&gt;
@@ -248,7 +248,7 @@
 &lt;li&gt;Can you draw an interesting scene with primitive shapes?&lt;/li&gt;
 &lt;li&gt;Can you build a game based entirely on shapes?&lt;/li&gt;
 &lt;li&gt;Can you create a spinning 3D cube out of polygons?&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Lua"></category><category term="lua"></category></entry><entry><title>Lua 2. Working With Sprites</title><link href="https://32blit.github.io/32blit-tutorials/lua-02-working-with-sprites.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/lua-02-working-with-sprites.html</id><summary type="html">&lt;p&gt;Working with sprites on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;/ol&gt;</content><category term="Lua"></category><category term="lua"></category><category term="tutorial"></category></entry><entry><title>Lua 2. Working With Sprites</title><link href="https://32blit.github.io/32blit-tutorials/lua-02-working-with-sprites.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/lua-02-working-with-sprites.html</id><summary type="html">&lt;p&gt;Working with sprites on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
 &lt;li&gt;&lt;a href="#introduction"&gt;Introduction&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#findingcreating-sprites"&gt;Finding/Creating Sprites&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href="#preparing-sprites-for-32blit-lua"&gt;Preparing Sprites For 32Blit Lua&lt;/a&gt;&lt;/li&gt;
@@ -468,4 +468,4 @@
 &lt;li&gt;Can you animate the walk cycle of the big tank?&lt;/li&gt;
 &lt;li&gt;Can you figure out a way to switch between walk/shoot animations?&lt;/li&gt;
 &lt;li&gt;Can you create and animate your own character?&lt;/li&gt;
-&lt;/ol&gt;</content><category term="Lua"></category><category term="lua"></category></entry></feed>
+&lt;/ol&gt;</content><category term="Lua"></category><category term="lua"></category><category term="tutorial"></category></entry></feed>

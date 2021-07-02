@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://32blit.github.io/32blit-tutorials/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://32blit.github.io/32blit-tutorials/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://32blit.github.io/32blit-tutorials/theme/pygments/vs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/font-awesome/css/solid.css">
+
+
+    <link href="https://32blit.github.io/32blit-tutorials/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="32Blit Tutorials Atom">
+
+    <link href="https://32blit.github.io/32blit-tutorials/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="32Blit Tutorials RSS">
+
+
+  
+
+
+ 
+
+<meta name="author" content="Philip Howard" />
+<meta name="description" content="An introspective on the thought and design process behind Rainbow Ascent" />
+<meta name="keywords" content="case-study">
+
+
+  <meta property="og:site_name" content="32Blit Tutorials"/>
+  <meta property="og:title" content="Case Study: Rainbow Ascent"/>
+  <meta property="og:description" content="An introspective on the thought and design process behind Rainbow Ascent"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://32blit.github.io/32blit-tutorials/rainbow-ascent-case-study.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:modified_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:author" content="https://32blit.github.io/32blit-tutorials/author/philip-howard.html">
+  <meta property="article:section" content="Case Studies"/>
+  <meta property="article:tag" content="case-study"/>
+  <meta property="og:image" content="">
+
+  <title>32Blit Tutorials &ndash; Case Study: Rainbow Ascent</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://32blit.github.io/32blit-tutorials/">
+        <img src="https://32blit.github.io/32blit-tutorials/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://32blit.github.io/32blit-tutorials/"></a>
+      </h1>
+
+<p>Lua and C++ Tutorials for the 32Blit handheld.</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://shop.pimoroni.com" >Pimoroni</a>
+            </li>
+            <li>
+              <a target="_self" href="https://32bilt.com" >32Blit</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-twitter" href="http://twitter.com/32blit" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="http://github.com/32blit" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://32blit.github.io/32blit-tutorials/">Home</a>
+
+      <a href="/category/lua.html">Lua Tutorials</a>
+      <a href="/category/c.html">C++ Tutorials</a>
+      <a href="/category/case-studies.html">Case Studies</a>
+
+      <a href="https://32blit.github.io/32blit-tutorials/feeds/all.atom.xml">Atom</a>
+
+      <a href="https://32blit.github.io/32blit-tutorials/feeds/all.rss.xml">RSS</a>
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="rainbow-ascent-case-study">Case Study: Rainbow Ascent</h1>
+    <p>
+      Posted on Fri 02 July 2021 in <a href="https://32blit.github.io/32blit-tutorials/category/case-studies.html">Case Studies</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#the-initial-idea">The Initial Idea</a><ul>
+<li><a href="#deciding-upon-10x10-tiles">Deciding Upon 10x10 Tiles</a></li>
+<li><a href="#visual-presentation">Visual Presentation</a></li>
+<li><a href="#the-first-iteration">The First Iteration</a></li>
+<li><a href="#evaluating-for-fitness">Evaluating For Fitness</a><ul>
+<li><a href="#fitness-isnt-enough">Fitness Isn't Enough</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#the-second-iteration">The Second Iteration</a><ul>
+<li><a href="#passages">Passages</a><ul>
+<li><a href="#what-characterises-a-passage">What Characterises A Passage</a></li>
+<li><a href="#the-results">The Results</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#fixing-the-gameplay">Fixing The Gameplay</a><ul>
+<li><a href="#pseudo-random">Pseudo Random</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Rainbow Ascent was originally created over Christmas 2019 as a thought exercise: could I create an "algorithm" that continuously generated a vertical maze that a player could traverse from bottom to top without being trapped by dead ends.</p>
+<p>The answer was yes, but the code wasn't particularly pretty and neither was the result. At the time I had no plans to turn the result into a playable game, so the tunnels were selected for their continuity and not playability.</p>
+<p><img alt="Screenshot of the very first Rainbow Ascent code" src="rainbow-ascent-2019-12-29.png" /></p>
+<p>This case study will touch upon the thought process behind Scrolly Tile - the crude level generation behind Rainbow Ascent - and how this simple mechanic, though layers of refinement, inspired a game with dynamic pacing.</p>
+<ol>
+<li>How did I approach the problem</li>
+<li>Why was this approach broken</li>
+<li>How did I make it more "playable"</li>
+<li>Turning the result into a game</li>
+</ol>
+<h2 id="the-initial-idea">The Initial Idea</h2>
+<p>In Rainbow Ascent's continuous, scrolling world the geometry has two states:</p>
+<ol>
+<li>Navigable</li>
+<li>Solid</li>
+</ol>
+<p>Right at the very start I realised this meant that each tile of the level could be represented as a single "bit". This is great because it keeps the level data small, concise and easy to work with.</p>
+<h3 id="deciding-upon-10x10-tiles">Deciding Upon 10x10 Tiles</h3>
+<p>In low resolution 32blit's screen is 160x120 pixels which can contain 20x15 of 32blit's 8x8 tiles. At this point I could have stuck with this and picked a 32-bit integer as the storage for each "row" of the level, but the clean and tidy division of 16 tiles into a 16-bit integer was... alluring.</p>
+<p>With 10x10 tiles I could display a 16-bit integer across the screen as level data - for example the first row of the level pictured above would be <code>0b0000000100001000</code> - and if I used bitwise operators to manipulate it I could expect predictable results.</p>
+<h3 id="visual-presentation">Visual Presentation</h3>
+<p>Because I was writing the code for the challenge of procedural generation - and had thrown away the concept of 8x8 tiles/sprites - I opted for very simple 10x10 pixel rectangles to represent the level. Rainbow Ascent went on to keep this style with some minor tweaks.</p>
+<h3 id="the-first-iteration">The First Iteration</h3>
+<p>The basic concept was simple enough, with each row being represented by a 16-bit integer I could generate a row at a time using random numbers as a source of entropy.</p>
+<p>At first my thought process was crude- "if a row is a number, then each row can just be a new random number."</p>
+<p><img alt="Rainbow Ascent displaying pure random level rows" src="rainbow-ascent-pure-random.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint16_t</span> <span class="nf">next_row</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="n">rand</span><span class="p">()</span> <span class="o">&amp;</span> <span class="mh">0xffff</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>Okay. Maybe not.</p>
+<h3 id="evaluating-for-fitness">Evaluating For Fitness</h3>
+<p>While purely random rows often resulted in passable levels purely by chance, the sheer amount of visual chaos, the dead-ends and the sudden stopping of passages resulted in an unholy mess that no player could traverse.</p>
+<p>In order for the level on the whole to be "navigable" - ie: the player can move from bottom to top in a continuous passage - I had to evaluate each new row for fitness. This involved comparing the new row to the previous row and ensuring they shared at least some open passageways.</p>
+<p>I ended up with some code that checked the new row against the previous row and ensured the two shared at least one "set" bit, indicating a passageway.</p>
+<p>This wasn't meaningfully better than pure random, however, since one passageway could end as another began and - even though they weren't linked - this could pass the test.</p>
+<h4 id="fitness-isnt-enough">Fitness Isn't Enough</h4>
+<p>The trouble with a naive approach that evaluates for fitness and rejects any rows which aren't suffuciently <em>continuous</em> from the previous level row, is that it doesn't feed back.</p>
+<p>If the "algorithm" doesn't learn from its mistakes, or at least make a minimal effort to produce passages that satisfy our requirements then we'll find ourselves throwing away row after row after row of data that's been rejected.</p>
+<p>I realised that what I really wanted was a passageway that would cut continuously through the level and wind back-and-forth under some given constraints.</p>
+<p>Since I knew the passageway would continually wind <em>up</em>, what remained was winding it left/right. In my 2019 attempt at solving this problem I had yet to arrive at the conclusion that I should track passageways as separate, tangible things and "cut" them throught the level. My approach to winding a passageway was crude and involved "smearing" the previous row of level data left/right by 0-7 steps:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint16_t</span> <span class="nf">next_row</span><span class="p">(</span><span class="kt">uint16_t</span> <span class="n">current_row</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">turning_size</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">8</span><span class="p">;</span>
+    <span class="kt">uint16_t</span> <span class="n">next_row</span> <span class="o">=</span> <span class="n">current_row</span><span class="p">;</span>
+
+    <span class="k">switch</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">3</span><span class="p">){</span>
+        <span class="k">case</span> <span class="mi">0</span><span class="o">:</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">turning_size</span><span class="o">--</span><span class="p">){</span>
+                <span class="n">next_row</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">next_row</span> <span class="o">&gt;&gt;</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="n">next_row</span> <span class="o">|=</span> <span class="mb">0b1000000000000000</span><span class="p">;</span>
+                <span class="n">next_row</span> <span class="o">&amp;=</span> <span class="mh">0xffff</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+        <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+            <span class="k">while</span><span class="p">(</span><span class="n">turning_size</span><span class="o">--</span><span class="p">){</span>
+                <span class="n">next_row</span> <span class="o">&amp;=</span> <span class="p">(</span><span class="n">next_row</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">);</span>
+                <span class="n">next_row</span> <span class="o">|=</span> <span class="mb">0b0000000000000001</span><span class="p">;</span>
+                <span class="n">next_row</span> <span class="o">&amp;=</span> <span class="mh">0xffff</span><span class="p">;</span>
+            <span class="p">}</span>
+            <span class="k">break</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">next_row</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>This code would generate a random number with the possible values: <code>0, 1, 2</code>.</p>
+<p>A switch statement would then determine if that number meant "smear left", "smear right" or "do nothing."</p>
+<p>Smearing would shift the level left/right and <code>and</code> it with itself causing any unset bits (which represent passageways) to spread to adjacent bits.</p>
+<p>This approach, however, was destructive:</p>
+<p><img alt="Rainbow Ascent displaying pure random level rows" src="rainbow-ascent-smearing.png" /></p>
+<p>With no new source of level data, eventually a single starting seed would be smeared across the level and the only remaining set bits would be at the extreme edges.</p>
+<p>I'll just fill the gaps...</p>
+<div class="highlight"><pre><span></span><code>    <span class="k">while</span><span class="p">(</span><span class="n">count_set_bits</span><span class="p">(</span><span class="n">new_row_mask</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">14</span><span class="p">){</span>
+        <span class="kt">uint8_t</span> <span class="n">set_bit</span> <span class="o">=</span> <span class="n">std</span><span class="o">::</span><span class="n">rand</span><span class="p">()</span> <span class="o">%</span> <span class="mi">16</span><span class="p">;</span>
+        <span class="n">new_row_mask</span> <span class="o">|=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="n">set_bit</span><span class="p">);</span>
+    <span class="p">}</span>
+</code></pre></div>
+
+<p>Uh, whoops!</p>
+<p><img alt="Rainbow Ascent displaying pure random level rows" src="rainbow-ascent-filling-the-gaps.png" /></p>
+<h2 id="the-second-iteration">The Second Iteration</h2>
+<p>Sometimes it's important to recognise the passage you're navigating might not be the right one. In this case I had painted myself into a corner by trying to smude and smear rows of level data around in order to produce a working, continuous passage. The level generation function was spending more time patching over its flaws than anything else.</p>
+<h3 id="passages">Passages</h3>
+<p>Since what I wanted to achieve was a maze of passages, it made more sense to introduce the concept of a passage into the code. Keeping track of individual passages meant that I could wind them back and forth independent of each other and, when it came to making each new level row, ensure they were continuous, consistent and traversable.</p>
+<h4 id="what-characterises-a-passage">What Characterises A Passage</h4>
+<p>A passage could be expressed almost like a player, needing only information like its position, direction and width in order to render it into the world.</p>
+<p>When each new level row is generated, the particulars of each passage are taken into account and they are carved into the world.</p>
+<p>Since the Y position (vertical) is constantly incrementing as the level generates I only needed to take into account the X position (horizontal). By using <code>random</code> indirectly to determine when a passage should change directon, I managed to preserve the random-driven procedural generation without breaking the rules that should constrain a passage. On each row the previous and next position of the passage is taken into account and it's drawn accordingly, linking these two points.</p>
+<p>In order to give the game dynamic pacing, the "width" of passages is increased/decreased in lockstep as the level progresses. Easy, simple, single passages open up into complicated, expansive caves with much more margin for error and fewer footholds. In Rainbow Ascent "width" corresponded to how many passages were enabled at once, rather than how wide any given passage should be.</p>
+<p>As a consequence of turning passages off, I needed some edge-case code to link passages back to the main passage when they were disabled.</p>
+<h4 id="the-results">The Results</h4>
+<p>These changes are somewhat caught admidst a sea of changes I made in January 2020 which included a striking rainbow graphics overhaul and the mechanics to carve a somewhat playable game out of this mess.</p>
+<p><img alt="Rainbow Ascent displaying pure random level rows" src="rainbow-ascent-2020-01-11.png" /></p>
+<p>But most striking of all is the passages. This change in perspective resulted in levels that looked more intentional, more traversible and less punishing than those generated before.</p>
+<p>The beaty of snaking passages was in their instructibility. As they narrowed and widened and crossed and weaved it was often impossible to see them as individual passages. The boring concept of a winding passageway became, instead, dynamic tunnels criss-crossing, exploding out into caves with plaforms and making a whole greater than the sum of its parts.</p>
+<p>But something was missing. It was too random, and difficult for any two players to meaningfully compare progress.</p>
+<h2 id="fixing-the-gameplay">Fixing The Gameplay</h2>
+<p>Early Rainbow Ascent offered an individual player a challenge to overcome the mechanics and level quirks and get the highest climbing score possible. But it offered no repeatability. Levels weren't just random, they were cryptographically secure random so not only could a player <em>not</em> try the same level over and over again and master its passageways... but that player would never see the level they just failed ever again.</p>
+<h3 id="pseudo-random">Pseudo Random</h3>
+<p>I needed psuedo random numbers to create predictable, but random-looking levels that everyone could see and replay. To do this I needed to brush up on LFSRs or Linear Feedback Shift Registers.</p>
+<p>LFSRs are extremely simple, iterative functions that mutate a sequence of bits in an expected, but seemingly random pattern. It starts with a "seed", a number chosen either by the programmer or the user, and then produces a sequence of numbers based upon it:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">uint32_t</span> <span class="n">prng_lfsr</span> <span class="o">=</span> <span class="mh">0x64063701</span><span class="p">;</span>
+<span class="k">const</span> <span class="kt">uint16_t</span> <span class="n">prng_tap</span> <span class="o">=</span> <span class="mh">0x74b8</span><span class="p">;</span>
+
+<span class="kt">uint32_t</span> <span class="nf">prng_next</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">uint8_t</span> <span class="n">lsb</span> <span class="o">=</span> <span class="n">prng_lfsr</span> <span class="o">&amp;</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">prng_lfsr</span> <span class="o">&gt;&gt;=</span> <span class="mi">1</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">lsb</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">prng_lfsr</span> <span class="o">^=</span> <span class="n">prng_tap</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">prng_lfsr</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+
+<p>While the numbers produced <em>feel</em> random, the actual output when setting <code>prng_lfsr</code> with a given seed value and calling <code>prng_next()</code> is entirely predictable. This is excellent for producing levels which don't look repetative, don't require any hand-crafting, but can be reproduced across multiple devices with the same logic.</p>
+<p>Below is a table showing every 10th output from the LFSR starting with our seed:</p>
+<p><img alt="Rainbow Ascent LFSR output" src="rainbow-ascent-lfsr.png" /></p>
+<p>Looks random enough! But, given the above seed, our <code>prng_next()</code> function will <em>always</em> return this same sequence of numbers.</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://32blit.github.io/32blit-tutorials/tag/case-study.html">case-study</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'blog-32blittutorials';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://32blit.github.io/32blit-tutorials/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 32Blit Tutorials ",
+  "url" : "https://32blit.github.io/32blit-tutorials",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
