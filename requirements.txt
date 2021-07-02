@@ -1,0 +1,14 @@
+blinker==1.4
+certifi==2020.6.20
+docutils==0.15.2
+feedgenerator==1.9.1
+Jinja2==2.11.2
+Markdown==3.3.4
+markdown-it-py==1.1.0
+MarkupSafe==1.1.1
+pelican==4.6.0
+Pygments==2.7.1
+python-dateutil==2.8.1
+pytz==2021.1
+six==1.15.0
+Unidecode==1.2.0
