@@ -1,7 +1,7 @@
 AUTHOR = 'Pimoroni Ltd.'
 SITENAME = "32Blit Tutorials"
 SITESUBTITLE = 'Lua and C++ Tutorials for the 32Blit handheld.'
-SITEURL = 'http://tutorials.32blit.com'
+SITEURL = 'https://32blit.github.io/32blit-tutorials/'
 TIMEZONE = "Europe/London"
 
 
@@ -13,8 +13,7 @@ PYGMENTS_STYLE = 'vs'
 PYGMENTS_STYLE_DARK = 'monokai'
 MAIN_MENU = True
 
-# can be useful in development, but set to False when you're ready to publish
-RELATIVE_URLS = True
+RELATIVE_URLS = False
 
 GITHUB_URL = 'http://github.com/32blit/'
 DISQUS_SITENAME = "blog-32blittutorials"
