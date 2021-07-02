@@ -1,4 +1,21 @@
-# 1. Lua: Drawing Shapes <!-- omit in toc -->
+Title: Lua 1. Drawing Shapes
+Date: 2021-07-02 14:00
+Modified: 2021-07-02 14:00
+Category: Lua
+Tags: lua
+Slug: lua-01-drawing-shapes
+Authors: Philip Howard
+Summary: Drawing shapes with Lua on the 32Blit
+
+- [Introduction](#introduction)
+- [Drawing Rectangles](#drawing-rectangles)
+- [Drawing Circles](#drawing-circles)
+- [Drawing Polygons](#drawing-polygons)
+  - [Triangles](#triangles)
+  - [Regular Sided Polygons](#regular-sided-polygons)
+- [Challenges](#challenges)
+
+## Introduction
 
 While you might not find primitive shapes useful in the graphical splendour of your finished games, you may find they are convenient for roughing out UI concepts, testing asumptions or perhaps even building something a little abstract.
 
@@ -10,7 +27,7 @@ The Lua API supports three kinds of shape:
 
 We'll go over how you express these shapes in code, how to draw them and where you might find them useful.
 
-### Drawing Rectangles
+## Drawing Rectangles
 
 Rectangles are special and get their very own type: `Rect`.
 
@@ -51,7 +68,7 @@ Since our screen is 160x120 pixels in `Lores` mode we need to draw a 80x80 pixel
 
 ![Drawing a red square in 32Blit Lua](drawing-a-square-lua.png)
 
-### Drawing Circles
+## Drawing Circles
 
 Unlike rectangles, circles don't have an equivilent to `Rect()` and are expressed instead in terms of their center - a `Point()` - and their raduis.
 
@@ -75,11 +92,11 @@ Since the circle is orientated around its center, our `Point` should "point" at 
 ![Drawing a red circle in 32Blit Lua](drawing-a-circle-lua.png)
 
 
-### Drawing Polygons
+## Drawing Polygons
 
 Polygons are slightly more complicated than rectangles and cirlces. While a rectangle *is* a polygon in theory we have a separate `rectangle` function because it's much faster to draw a rectangle if we can make assumptions about its shape.
 
-#### Triangles
+### Triangles
 
 In Lua you can draw a polygon by supplying three or more `Point` arguments, or a table of `Point`s. Let's try the first and draw a triangle using the top left, bottom left, and bottom right corners of our square as the points:
 
@@ -99,7 +116,7 @@ end
 
 ![Drawing a red triangle in 32Blit Lua](drawing-a-triangle-lua.png)
 
-#### Regular Sided Polygons
+### Regular Sided Polygons
 
 The best polygons start with 5 points and include the venerable Pentagon, Hexagon, Septagon and Octagon. Since we don't want to figure out what the points that make these up should be, we'll use a handy function instead:
 
@@ -197,7 +214,7 @@ Well, look at that! The five points of our pentagon all touch the edge of the ci
 
 > Note: we negate the `y` axis when drawing our shape because our coordinate system goes from `0,0` in the top-left corner of the screen to `159,119` in the bottom right and is flipped vertically in relation to the Cartesian coordinates you might encounter in geometry. Indeed if we take the angle `0` as indicating the top of our circle and note that along the x-axis `sin(0) == 0` and along the y-axis `cos(0) == 1` it's clear that our shapes will be mirrored vertically without this flip.
 
-### Challenges
+## Challenges
 
 1. Can you draw a concave polygon?
 2. Can you draw an interesting scene with primitive shapes?

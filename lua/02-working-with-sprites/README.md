@@ -1,7 +1,13 @@
-# 2. Lua: Working With Sprites <!-- omit in toc -->
+Title: Lua 2. Working With Sprites
+Date: 2021-07-02 14:00
+Modified: 2021-07-02 14:00
+Category: Lua
+Tags: lua
+Slug: lua-02-working-with-sprites
+Authors: Philip Howard
+Summary: Working with sprites on the 32Blit
 
-Sprites are an essential graphical building block for building great-looking 2D games. In the world of 32Blit a "sprite" is considered an 8x8 pixel image. It might comprise a whole tiny character, fruit or icon or it may be part of a larger object made up of many sprites. Sprites can also represent single animation frames, and the full walk cycle of a character - for instance - might use a dozen sprites.
-
+- [Introduction](#introduction)
 - [Finding/Creating Sprites](#findingcreating-sprites)
 - [Preparing Sprites For 32Blit Lua](#preparing-sprites-for-32blit-lua)
 - [Loading Sprites](#loading-sprites)
@@ -10,9 +16,13 @@ Sprites are an essential graphical building block for building great-looking 2D 
 - [Animating Sprites](#animating-sprites)
 - [Challenges](#challenges)
 
-### Finding/Creating Sprites
+## Introduction
 
-### Preparing Sprites For 32Blit Lua
+Sprites are an essential graphical building block for building great-looking 2D games. In the world of 32Blit a "sprite" is considered an 8x8 pixel image. It might comprise a whole tiny character, fruit or icon or it may be part of a larger object made up of many sprites. Sprites can also represent single animation frames, and the full walk cycle of a character - for instance - might use a dozen sprites.
+
+## Finding/Creating Sprites
+
+## Preparing Sprites For 32Blit Lua
 
 Once you have your 128x128 pixel spritesheet, you must prepare it for loading on 32Blit. If you used the 32Blit Sprite Editor then - good news - the `.bmp` output file is compatible with 32Blit Lua and you can just load it right up without any preparation, skip to the next step!
 
@@ -24,7 +34,7 @@ If you created your spritesheet using another application, found one online or a
 
 This tells the tools to pack an image - `spritesheet.bmp` - into a packed, 32Blit spritesheet file - `spritesheet.bin`.
 
-### Loading Sprites
+## Loading Sprites
 
 Now you have either a `.bmp` file or a `.bin` file ready to load into your Lua script. Fortunately you just need one line in your `init` function:
 
@@ -40,7 +50,7 @@ function update(time)
 end
 ```
 
-### Drawing Sprites
+## Drawing Sprites
 
 So we're on the same page, I'm going to use the `tankbot.bmp` supplied with this tutorial. This sheet contains some animated robots I whipped up in Sprite Editor.
 
@@ -81,7 +91,7 @@ A sprite can be referred to by its index in the spritesheet - from 0 to 255 - or
 
 The second `Point` supplied to the `sprite` function is the location at which it should be drawn on the screen. By varying which sprite is drawn, and where it's drawn, you can animate a character walking across the screen.
 
-### Building Bigger Characters
+## Building Bigger Characters
 
 Two sprites make for a fairly tiny character, but what about the larger walking tank in `tankbot.bmp`. It consists of *four* sprites starting at `Point(0, 5)`. Let's draw it:
 
@@ -163,7 +173,7 @@ end
 
 This is great because we only need to update *one* thing to animate our characters. The "X" position of each `Rect`.
 
-### Animating Sprites
+## Animating Sprites
 
 Animating sprites is simple- you just show the individual sprite frames in sequence. But how do we do that?
 
@@ -263,7 +273,7 @@ And the final result is beautiful animation:
 
 ![Final animationr esult](animated-sprites-lua.gif)
 
-### Challenges
+## Challenges
 
 A complete example - `sprites.lua` - is saved alongside this guide for you to play with!
 
