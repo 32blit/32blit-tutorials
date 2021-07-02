@@ -2,7 +2,7 @@ Title: Lua 2. Working With Sprites
 Date: 2021-07-02 14:00
 Modified: 2021-07-02 14:00
 Category: Lua
-Tags: lua
+Tags: lua, tutorial
 Slug: lua-02-working-with-sprites
 Authors: Philip Howard
 Summary: Working with sprites on the 32Blit

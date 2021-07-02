@@ -1,4 +1,27 @@
-# Rainbow Ascent <!-- omit in toc -->
+Title: Case Study: Rainbow Ascent
+Date: 2021-07-02 14:00
+Modified: 2021-07-02 14:00
+Category: Case Studies
+Tags: case-study
+Slug: rainbow-ascent-case-study
+Authors: Philip Howard
+Summary: An introspective on the thought and design process behind Rainbow Ascent
+
+- [Introduction](#introduction)
+- [The Initial Idea](#the-initial-idea)
+  - [Deciding Upon 10x10 Tiles](#deciding-upon-10x10-tiles)
+  - [Visual Presentation](#visual-presentation)
+  - [The First Iteration](#the-first-iteration)
+  - [Evaluating For Fitness](#evaluating-for-fitness)
+    - [Fitness Isn't Enough](#fitness-isnt-enough)
+- [The Second Iteration](#the-second-iteration)
+  - [Passages](#passages)
+    - [What Characterises A Passage](#what-characterises-a-passage)
+    - [The Results](#the-results)
+- [Fixing The Gameplay](#fixing-the-gameplay)
+  - [Pseudo Random](#pseudo-random)
+
+## Introduction
 
 Rainbow Ascent was originally created over Christmas 2019 as a thought exercise: could I create an "algorithm" that continuously generated a vertical maze that a player could traverse from bottom to top without being trapped by dead ends.
 
@@ -12,19 +35,6 @@ This case study will touch upon the thought process behind Scrolly Tile - the cr
 2. Why was this approach broken
 3. How did I make it more "playable"
 4. Turning the result into a game
-
-- [The Initial Idea](#the-initial-idea)
-  - [Deciding Upon 10x10 Tiles](#deciding-upon-10x10-tiles)
-  - [Visual Presentation](#visual-presentation)
-  - [The First Iteration](#the-first-iteration)
-  - [Evaluating For Fitness](#evaluating-for-fitness)
-    - [Fitness Isn't Enough](#fitness-isnt-enough)
-- [The Second Iteration](#the-second-iteration)
-  - [Passages](#passages)
-    - [What Characterises A Passage](#what-characterises-a-passage)
-    - [The Results](#the-results)
-- [Fixing The Gameplay](#fixing-the-gameplay)
-  - [Pseudo Random](#pseudo-random)
 
 ## The Initial Idea
 

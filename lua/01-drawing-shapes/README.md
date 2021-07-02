@@ -2,7 +2,7 @@ Title: Lua 1. Drawing Shapes
 Date: 2021-07-02 14:00
 Modified: 2021-07-02 14:00
 Category: Lua
-Tags: lua
+Tags: lua, tutorial
 Slug: lua-01-drawing-shapes
 Authors: Philip Howard
 Summary: Drawing shapes with Lua on the 32Blit

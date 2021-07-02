@@ -33,7 +33,7 @@ SOCIAL = (('twitter', 'http://twitter.com/32blit'),
 
 MENUITEMS = (
     ("Lua Tutorials", "/category/lua.html"),
-    ("C++ Tutorials", "/category/c++.html"),
+    ("C++ Tutorials", "/category/c.html"),
     ("Case Studies", "/category/case-studies.html"),
 )
 

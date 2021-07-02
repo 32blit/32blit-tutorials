@@ -35,6 +35,13 @@ jobs:
       run: |
         pelican -vv
 
+    - name: Copy Images
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: bash
+      run: |
+        cp */*.png output/
+        cp */*.gif output/
+
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.4
       with:
