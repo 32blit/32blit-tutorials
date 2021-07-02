@@ -1,0 +1,257 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="http://tutorials.32blit.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="http://tutorials.32blit.com/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="http://tutorials.32blit.com/theme/pygments/vs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/solid.css">
+
+
+    <link href="http://tutorials.32blit.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="32Blit Tutorials Atom">
+
+    <link href="http://tutorials.32blit.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="32Blit Tutorials RSS">
+
+
+  
+
+
+ 
+
+<meta name="author" content="Philip Howard" />
+<meta name="description" content="Getting started with Lua on the 32Blit" />
+<meta name="keywords" content="lua">
+
+
+  <meta property="og:site_name" content="32Blit Tutorials"/>
+  <meta property="og:title" content="Lua 0. Getting Started"/>
+  <meta property="og:description" content="Getting started with Lua on the 32Blit"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="http://tutorials.32blit.com/lua-00-getting-started.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:modified_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:author" content="http://tutorials.32blit.com/author/philip-howard.html">
+  <meta property="article:section" content="Lua"/>
+  <meta property="article:tag" content="lua"/>
+  <meta property="og:image" content="">
+
+  <title>32Blit Tutorials &ndash; Lua 0. Getting Started</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="http://tutorials.32blit.com/">
+        <img src="http://tutorials.32blit.com/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="http://tutorials.32blit.com/"></a>
+      </h1>
+
+<p>Lua and C++ Tutorials for the 32Blit handheld.</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://shop.pimoroni.com" >Pimoroni</a>
+            </li>
+            <li>
+              <a target="_self" href="https://32bilt.com" >32Blit</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-twitter" href="http://twitter.com/32blit" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="http://github.com/32blit" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://tutorials.32blit.com/">Home</a>
+
+      <a href="/category/lua.html">Lua Tutorials</a>
+      <a href="/category/c++.html">C++ Tutorials</a>
+      <a href="/category/case-studies.html">Case Studies</a>
+
+      <a href="http://tutorials.32blit.com/feeds/all.atom.xml">Atom</a>
+
+      <a href="http://tutorials.32blit.com/feeds/all.rss.xml">RSS</a>
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="lua-00-getting-started">Lua 0. Getting Started</h1>
+    <p>
+      Posted on Fri 02 July 2021 in <a href="http://tutorials.32blit.com/category/lua.html">Lua</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#debugging-locally">Debugging Locally</a></li>
+<li><a href="#running-on-32blit">Running On 32Blit</a></li>
+<li><a href="#basics-of-a-32blit-lua-script">Basics Of A 32Blit Lua Script</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Lua on the 32Blit is an application, like any other, with two key differences:</p>
+<ol>
+<li>Instead of being a game in its own right, it understands and runs <code>.lua</code> scripts</li>
+<li>It registers a file association with the 32Blit launcher so you can browse run <code>.lua</code> scripts right from the main menu</li>
+</ol>
+<p>This introduction will teach you how to run 32Blit Lua files on your computer and on the 32Blit:</p>
+<h2 id="debugging-locally">Debugging Locally</h2>
+<p>You don't strictly <em>need</em> a 32Blit for testing out your <code>.lua</code> scripts. You can <a href="https://github.com/32blit/32blit-lua/tree/main">build the Lua engine from source</a> and run it right on your computer or <a href="https://github.com/32blit/32blit-lua/releases/latest">grab the latest release for your platform</a> and run a <code>.lua</code> file with the <code>--launch_path</code> argument like so:</p>
+<div class="highlight"><pre><span></span><code>./32blit_lua --launch_path script.lua
+</code></pre></div>
+
+<h2 id="running-on-32blit">Running On 32Blit</h2>
+<p>You will need an SD card inserted in your 32Blit to save <code>.lua</code> files or resources.</p>
+<p>For copying games over to your 32Blit you'll need the 32blit tools. These require Python 3 and you can install them with:</p>
+<div class="highlight"><pre><span></span><code>python3 -m pip install 32blit --user
+</code></pre></div>
+
+<p>You must also install <code>32blit_lua.blit</code> onto your device so it can recognise and run Lua. <a href="https://github.com/32blit/32blit-lua/releases/latest">Grab the latest release for the 32Blit (STM32)</a>, eg: <code>32blit-lua-v0.0.2-STM32.zip</code>. Extract the file and use the 32Blit tool to install it:</p>
+<div class="highlight"><pre><span></span><code>32blit install 32blit_lua.blit
+</code></pre></div>
+
+<p>You should now be able to use the 32Blit tools to save Lua scripts, images and more to your device:</p>
+<div class="highlight"><pre><span></span><code>32blit install my_script.lua
+</code></pre></div>
+
+<p>This will save <code>my_script.lua</code> to the root of your SD card, in the main menu this is called "ROOT" in the list at the top, and you can navigate between "FLASH:" and "ROOT" with the left/right buttons on your 32Blit.</p>
+<p>Navigate to your script and launch it with the right (pink) face button.</p>
+<h2 id="basics-of-a-32blit-lua-script">Basics Of A 32Blit Lua Script</h2>
+<p>Every Lua script on the 32Blit has some basic requirements and must define the following functions:</p>
+<ol>
+<li><code>init</code> - for setting things up when your game first launches</li>
+<li><code>update</code> - for updating the state of your game, world or physics</li>
+<li><code>render</code> - called at 50FPS, for drawing your game world to the screen</li>
+</ol>
+<p>A basic Lua script might look something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">minimal_font</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>This code will display the text "Hello World". You can save it as <code>helloworld.lua</code> and run it on your computer with:</p>
+<div class="highlight"><pre><span></span><code>./32blit_lua --launch_path helloworld.lua
+</code></pre></div>
+
+<p>You should see something like this:</p>
+<p><img alt="Displaying Hello World in 32Blit Lua" src="hello-world-lua.png" /></p>
+<p>Or you can save it to your 32blit with:</p>
+<div class="highlight"><pre><span></span><code>32blit install helloworld.lua
+</code></pre></div>
+
+<p>And it will show up in the launcher like this:</p>
+<p><img alt="Locating helloworld.lua in the 32Blit launcher" src="launch-hello-world-lua.png" /></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://tutorials.32blit.com/tag/lua.html">lua</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'blog-32blittutorials';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="http://tutorials.32blit.com/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 32Blit Tutorials ",
+  "url" : "http://tutorials.32blit.com",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="http://tutorials.32blit.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="http://tutorials.32blit.com/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="http://tutorials.32blit.com/theme/pygments/vs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/solid.css">
+
+
+    <link href="http://tutorials.32blit.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="32Blit Tutorials Atom">
+
+    <link href="http://tutorials.32blit.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="32Blit Tutorials RSS">
+
+
+  
+
+
+ 
+
+<meta name="author" content="Philip Howard" />
+<meta name="description" content="Working with sprites on the 32Blit" />
+<meta name="keywords" content="lua">
+
+
+  <meta property="og:site_name" content="32Blit Tutorials"/>
+  <meta property="og:title" content="Lua 2. Working With Sprites"/>
+  <meta property="og:description" content="Working with sprites on the 32Blit"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="http://tutorials.32blit.com/lua-02-working-with-sprites.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:modified_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:author" content="http://tutorials.32blit.com/author/philip-howard.html">
+  <meta property="article:section" content="Lua"/>
+  <meta property="article:tag" content="lua"/>
+  <meta property="og:image" content="">
+
+  <title>32Blit Tutorials &ndash; Lua 2. Working With Sprites</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="http://tutorials.32blit.com/">
+        <img src="http://tutorials.32blit.com/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="http://tutorials.32blit.com/"></a>
+      </h1>
+
+<p>Lua and C++ Tutorials for the 32Blit handheld.</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://shop.pimoroni.com" >Pimoroni</a>
+            </li>
+            <li>
+              <a target="_self" href="https://32bilt.com" >32Blit</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-twitter" href="http://twitter.com/32blit" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="http://github.com/32blit" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://tutorials.32blit.com/">Home</a>
+
+      <a href="/category/lua.html">Lua Tutorials</a>
+      <a href="/category/c++.html">C++ Tutorials</a>
+      <a href="/category/case-studies.html">Case Studies</a>
+
+      <a href="http://tutorials.32blit.com/feeds/all.atom.xml">Atom</a>
+
+      <a href="http://tutorials.32blit.com/feeds/all.rss.xml">RSS</a>
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="lua-02-working-with-sprites">Lua 2. Working With Sprites</h1>
+    <p>
+      Posted on Fri 02 July 2021 in <a href="http://tutorials.32blit.com/category/lua.html">Lua</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#findingcreating-sprites">Finding/Creating Sprites</a></li>
+<li><a href="#preparing-sprites-for-32blit-lua">Preparing Sprites For 32Blit Lua</a></li>
+<li><a href="#loading-sprites">Loading Sprites</a></li>
+<li><a href="#drawing-sprites">Drawing Sprites</a></li>
+<li><a href="#building-bigger-characters">Building Bigger Characters</a></li>
+<li><a href="#animating-sprites">Animating Sprites</a></li>
+<li><a href="#challenges">Challenges</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>Sprites are an essential graphical building block for building great-looking 2D games. In the world of 32Blit a "sprite" is considered an 8x8 pixel image. It might comprise a whole tiny character, fruit or icon or it may be part of a larger object made up of many sprites. Sprites can also represent single animation frames, and the full walk cycle of a character - for instance - might use a dozen sprites.</p>
+<h2 id="findingcreating-sprites">Finding/Creating Sprites</h2>
+<h2 id="preparing-sprites-for-32blit-lua">Preparing Sprites For 32Blit Lua</h2>
+<p>Once you have your 128x128 pixel spritesheet, you must prepare it for loading on 32Blit. If you used the 32Blit Sprite Editor then - good news - the <code>.bmp</code> output file is compatible with 32Blit Lua and you can just load it right up without any preparation, skip to the next step!</p>
+<p>If you created your spritesheet using another application, found one online or are using one of the 32Blit SDK spritesheets you'll need to convert it using the 32Blit tools:</p>
+<div class="highlight"><pre><span></span><code><span class="err">32blit image --input_type image --input_file spritesheet.bmp --output_file spritesheet.bin</span>
+</code></pre></div>
+
+<p>This tells the tools to pack an image - <code>spritesheet.bmp</code> - into a packed, 32Blit spritesheet file - <code>spritesheet.bin</code>.</p>
+<h2 id="loading-sprites">Loading Sprites</h2>
+<p>Now you have either a <code>.bmp</code> file or a <code>.bin</code> file ready to load into your Lua script. Fortunately you just need one line in your <code>init</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">load_sprites</span><span class="p">(</span><span class="s2">&quot;spritesheet.bmp&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<h2 id="drawing-sprites">Drawing Sprites</h2>
+<p>So we're on the same page, I'm going to use the <code>tankbot.bmp</code> supplied with this tutorial. This sheet contains some animated robots I whipped up in Sprite Editor.</p>
+<p>The very top row of sprites is a simple little walking robot consisting of two sprites. Let's draw the whole robot:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">load_sprites</span><span class="p">(</span><span class="s2">&quot;tankbot.bmp&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">minimal_font</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>If we run this code, we should see:</p>
+<p><img alt="Drawing sprites in 32Blit Lua" src="drawing-sprites-lua.png" /></p>
+<p>The important lines here are:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+</code></pre></div>
+
+<p>A sprite can be referred to by its index in the spritesheet - from 0 to 255 - or, more easily, by its X and Y coordinates using a <code>Point</code>. In this case the points <code>Point(0, 0)</code> and <code>Point(0, 1)</code> describe the very top left sprite in the sheet, and the one immediately beneath it.</p>
+<p>The second <code>Point</code> supplied to the <code>sprite</code> function is the location at which it should be drawn on the screen. By varying which sprite is drawn, and where it's drawn, you can animate a character walking across the screen.</p>
+<h2 id="building-bigger-characters">Building Bigger Characters</h2>
+<p>Two sprites make for a fairly tiny character, but what about the larger walking tank in <code>tankbot.bmp</code>. It consists of <em>four</em> sprites starting at <code>Point(0, 5)</code>. Let's draw it:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">load_sprites</span><span class="p">(</span><span class="s2">&quot;tankbot.bmp&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">minimal_font</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+
+    <span class="c1">-- Small robot</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+
+    <span class="c1">-- Big tank</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>If we run this code, we should see:</p>
+<p><img alt="Drawing big sprites in 32Blit Lua" src="drawing-big-sprites-lua.png" /></p>
+<p>That's an awful lot of lines to draw one character, though, what if we could combine those from:</p>
+<div class="highlight"><pre><span></span><code>    <span class="c1">-- Big tank</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">98</span><span class="p">,</span> <span class="mi">52</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Into:</p>
+<div class="highlight"><pre><span></span><code>    <span class="c1">-- Big tank</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+</code></pre></div>
+
+<p>Well. It turns out we can. The <code>sprite</code> function will accept a <code>Rect</code> pointing to the sprite at the top left corner of our character, and giving the width/height of the character in sprites. Handy!</p>
+<p>Let's use <code>Rect</code> for our smaller sprite too:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">load_sprites</span><span class="p">(</span><span class="s2">&quot;tankbot.bmp&quot;</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">minimal_font</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+
+    <span class="c1">-- Small robot</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+
+    <span class="c1">-- Big tank</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>This is great because we only need to update <em>one</em> thing to animate our characters. The "X" position of each <code>Rect</code>.</p>
+<h2 id="animating-sprites">Animating Sprites</h2>
+<p>Animating sprites is simple- you just show the individual sprite frames in sequence. But how do we do that?</p>
+<p>Normally when we're animating a character we want the procession of frames to be slow. Much slower than our actual framerate. Our walk cycle and big tank action cycle, in this case, have eight frames each.</p>
+<p>At 50 FPS an eight frame animation would take all of 160 milliseconds to complete... that's just under two tenths of a second. Yikes!</p>
+<p>We want to slow this right down to <em>one</em> frame every tenth of a second (100 milliseconds) and we'll use a <code>Timer</code> to do this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">timer</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">()</span>
+<span class="n">frame</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1">-- Store our small/big robot locations somewhere tidy</span>
+<span class="n">small_robot</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">big_robot</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1">-- Function that the timer calls every 100ms</span>
+<span class="kr">function</span> <span class="nf">animate</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="kr">if</span> <span class="n">frame</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="kr">then</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">load_sprites</span><span class="p">(</span><span class="s2">&quot;tankbot.bmp&quot;</span><span class="p">)</span>
+    <span class="n">timer</span><span class="p">:</span><span class="n">init</span><span class="p">(</span><span class="n">animate</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1">-- new 100ms timer</span>
+    <span class="n">timer</span><span class="p">:</span><span class="n">start</span><span class="p">()</span> <span class="c1">-- start the timer!</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Hello World&quot;</span><span class="p">,</span> <span class="n">minimal_font</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+
+    <span class="c1">-- Show the current frame</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">text</span><span class="p">(</span><span class="s2">&quot;Frame: &quot;</span> <span class="o">..</span> <span class="n">frame</span><span class="p">,</span> <span class="n">minimal_font</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">60</span><span class="p">))</span>
+
+    <span class="c1">-- Small robot</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">small_robot</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+
+    <span class="c1">-- Big tank</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">sprite</span><span class="p">(</span><span class="n">big_robot</span><span class="p">,</span> <span class="n">Point</span><span class="p">(</span><span class="mi">90</span><span class="p">,</span> <span class="mi">44</span><span class="p">))</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>Run this code and you'll see the frame count from 0 to 7 and back to 0.</p>
+<p><img alt="Counting sprite frames in Lua" src="counting-frames-lua.png" /></p>
+<p>The <code>Timer()</code> is given two arguments, the function to call and the interval it should call it. In this case we pass it the <code>animate</code> functon and tell it to call <code>animate</code> every 100ms. Animate just adds 1 to the frame counter every interval and resets the frame counter to 0 if it exceeds 7... 0 to 7 is eight frames:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">animate</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="kr">if</span> <span class="n">frame</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="kr">then</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kr">end</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>This is great. We have a frame number and we can control how fast it changes and what range it spans.</p>
+<p>"How do we translate that into animation?" you ask.</p>
+<p>With a couple of additional lines in our <code>animate</code> function:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">-- Function that the timer calls every 100ms</span>
+<span class="kr">function</span> <span class="nf">animate</span><span class="p">(</span><span class="n">timer</span><span class="p">)</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="kr">if</span> <span class="n">frame</span> <span class="o">&gt;</span> <span class="mi">7</span> <span class="kr">then</span>
+        <span class="n">frame</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="kr">end</span>
+    <span class="c1">-- Update the sprites we&#39;re pointing at based on the current frame</span>
+    <span class="n">small_robot</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">small_robot</span><span class="p">.</span><span class="n">w</span>
+    <span class="n">big_robot</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">big_robot</span><span class="p">.</span><span class="n">w</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>These lines update the "X" position of our sprite using the current frame. By multiplying the current frame by the sprite width we can step over multiple, multi-sprite characters:</p>
+<div class="highlight"><pre><span></span><code>    <span class="n">small_robot</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">small_robot</span><span class="p">.</span><span class="n">w</span>
+    <span class="n">big_robot</span><span class="p">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">frame</span> <span class="o">*</span> <span class="n">big_robot</span><span class="p">.</span><span class="n">w</span>
+</code></pre></div>
+
+<p>And the final result is beautiful animation:</p>
+<p><img alt="Final animationr esult" src="animated-sprites-lua.gif" /></p>
+<h2 id="challenges">Challenges</h2>
+<p>A complete example - <code>sprites.lua</code> - is saved alongside this guide for you to play with!</p>
+<ol>
+<li>Can you move a character as it animates? Tip: the second <code>Point</code> given to <code>sprite</code> is the location where it's drawn.</li>
+<li>Can you animate the walk cycle of the big tank?</li>
+<li>Can you figure out a way to switch between walk/shoot animations?</li>
+<li>Can you create and animate your own character?</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://tutorials.32blit.com/tag/lua.html">lua</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'blog-32blittutorials';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="http://tutorials.32blit.com/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 32Blit Tutorials ",
+  "url" : "http://tutorials.32blit.com",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

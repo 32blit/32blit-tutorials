@@ -1,0 +1,370 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="http://tutorials.32blit.com/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="http://tutorials.32blit.com/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="http://tutorials.32blit.com/theme/pygments/vs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="http://tutorials.32blit.com/theme/font-awesome/css/solid.css">
+
+
+    <link href="http://tutorials.32blit.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="32Blit Tutorials Atom">
+
+    <link href="http://tutorials.32blit.com/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="32Blit Tutorials RSS">
+
+
+  
+
+
+ 
+
+<meta name="author" content="Philip Howard" />
+<meta name="description" content="Drawing shapes with Lua on the 32Blit" />
+<meta name="keywords" content="lua">
+
+
+  <meta property="og:site_name" content="32Blit Tutorials"/>
+  <meta property="og:title" content="Lua 1. Drawing Shapes"/>
+  <meta property="og:description" content="Drawing shapes with Lua on the 32Blit"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="http://tutorials.32blit.com/lua-01-drawing-shapes.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:modified_time" content="2021-07-02 14:00:00+01:00"/>
+  <meta property="article:author" content="http://tutorials.32blit.com/author/philip-howard.html">
+  <meta property="article:section" content="Lua"/>
+  <meta property="article:tag" content="lua"/>
+  <meta property="og:image" content="">
+
+  <title>32Blit Tutorials &ndash; Lua 1. Drawing Shapes</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="http://tutorials.32blit.com/">
+        <img src="http://tutorials.32blit.com/theme/img/profile.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="http://tutorials.32blit.com/"></a>
+      </h1>
+
+<p>Lua and C++ Tutorials for the 32Blit handheld.</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://shop.pimoroni.com" >Pimoroni</a>
+            </li>
+            <li>
+              <a target="_self" href="https://32bilt.com" >32Blit</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-twitter" href="http://twitter.com/32blit" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="http://github.com/32blit" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="http://tutorials.32blit.com/">Home</a>
+
+      <a href="/category/lua.html">Lua Tutorials</a>
+      <a href="/category/c++.html">C++ Tutorials</a>
+      <a href="/category/case-studies.html">Case Studies</a>
+
+      <a href="http://tutorials.32blit.com/feeds/all.atom.xml">Atom</a>
+
+      <a href="http://tutorials.32blit.com/feeds/all.rss.xml">RSS</a>
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="lua-01-drawing-shapes">Lua 1. Drawing Shapes</h1>
+    <p>
+      Posted on Fri 02 July 2021 in <a href="http://tutorials.32blit.com/category/lua.html">Lua</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#drawing-rectangles">Drawing Rectangles</a></li>
+<li><a href="#drawing-circles">Drawing Circles</a></li>
+<li><a href="#drawing-polygons">Drawing Polygons</a><ul>
+<li><a href="#triangles">Triangles</a></li>
+<li><a href="#regular-sided-polygons">Regular Sided Polygons</a></li>
+</ul>
+</li>
+<li><a href="#challenges">Challenges</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>While you might not find primitive shapes useful in the graphical splendour of your finished games, you may find they are convenient for roughing out UI concepts, testing asumptions or perhaps even building something a little abstract.</p>
+<p>The Lua API supports three kinds of shape:</p>
+<ol>
+<li>Rectangle (and, by extension, square)</li>
+<li>Circle</li>
+<li>Polygon</li>
+</ol>
+<p>We'll go over how you express these shapes in code, how to draw them and where you might find them useful.</p>
+<h2 id="drawing-rectangles">Drawing Rectangles</h2>
+<p>Rectangles are special and get their very own type: <code>Rect</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">tiny_square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</code></pre></div>
+
+<p>A <code>Rect</code> describes a rectangle in terms of its position (<code>x</code>, <code>y</code>) and size (<code>w</code>, <code>h</code>) and can be used not only for drawing rectangles but for masking areas of the screen, specifying the bounds of a text area, determining regions to blit from/to and more besides. Understanding when and how to use <code>Rect</code> is vital, indeed you'll be using it in the next tutorial.</p>
+<p>Rectangles are <em>drawn</em> with the <code>rectangle</code> function. Normally you'll do something like this:</p>
+<div class="highlight"><pre><span></span><code><span class="n">screen</span><span class="p">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</code></pre></div>
+
+<p>The colour of your rectangle is determined by the current <code>pen</code>. <code>pen</code> is a property set on your <code>screen</code> or <code>Surface</code> and you can change it on a whim like so:</p>
+<div class="highlight"><pre><span></span><code><span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="c1">-- Really red Pen</span>
+</code></pre></div>
+
+<p>Let's combine these commands together into something that draws a rectangle to the screen:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">Rect</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">))</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>Since our screen is 160x120 pixels in <code>Lores</code> mode we need to draw a 80x80 pixel rectangle at 40x20 for it to appear centered. Rectangles are orientated from their top-left corner.</p>
+<p><img alt="Drawing a red square in 32Blit Lua" src="drawing-a-square-lua.png" /></p>
+<h2 id="drawing-circles">Drawing Circles</h2>
+<p>Unlike rectangles, circles don't have an equivilent to <code>Rect()</code> and are expressed instead in terms of their center - a <code>Point()</code> - and their raduis.</p>
+<p>Let's draw a circle the same size as our square in the same location:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">circle</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">80</span><span class="p">,</span> <span class="mi">60</span><span class="p">),</span> <span class="mi">40</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>Since the circle is orientated around its center, our <code>Point</code> should "point" at the center of the screen which is <code>160 / 2</code> by <code>120 / 2</code> or <code>Point(80, 60)</code>.</p>
+<p><img alt="Drawing a red circle in 32Blit Lua" src="drawing-a-circle-lua.png" /></p>
+<h2 id="drawing-polygons">Drawing Polygons</h2>
+<p>Polygons are slightly more complicated than rectangles and cirlces. While a rectangle <em>is</em> a polygon in theory we have a separate <code>rectangle</code> function because it's much faster to draw a rectangle if we can make assumptions about its shape.</p>
+<h3 id="triangles">Triangles</h3>
+<p>In Lua you can draw a polygon by supplying three or more <code>Point</code> arguments, or a table of <code>Point</code>s. Let's try the first and draw a triangle using the top left, bottom left, and bottom right corners of our square as the points:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">square</span> <span class="o">=</span> <span class="n">Rect</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">square</span><span class="p">.</span><span class="n">tl</span><span class="p">,</span> <span class="n">square</span><span class="p">.</span><span class="n">bl</span><span class="p">,</span> <span class="n">square</span><span class="p">.</span><span class="n">br</span><span class="p">)</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p><img alt="Drawing a red triangle in 32Blit Lua" src="drawing-a-triangle-lua.png" /></p>
+<h3 id="regular-sided-polygons">Regular Sided Polygons</h3>
+<p>The best polygons start with 5 points and include the venerable Pentagon, Hexagon, Septagon and Octagon. Since we don't want to figure out what the points that make these up should be, we'll use a handy function instead:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">regular_polygon</span><span class="p">(</span><span class="n">polygon_center</span><span class="p">,</span> <span class="n">polygon_sides</span><span class="p">,</span> <span class="n">polygon_radius</span><span class="p">,</span> <span class="n">polygon_rotation</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">regular_polygon</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">polygon_rotation</span> <span class="o">=</span> <span class="n">polygon_rotation</span> <span class="ow">or</span> <span class="mi">0</span>
+    <span class="n">polygon_rotation</span> <span class="o">=</span> <span class="nb">math.rad</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">polygon_rotation</span> <span class="o">%</span> <span class="mi">360</span><span class="p">))</span>
+
+    <span class="c1">-- The angle between each side</span>
+    <span class="n">polygon_angle</span> <span class="o">=</span> <span class="p">(</span><span class="nb">math.pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">polygon_sides</span>
+
+    <span class="c1">-- Orient the flat side down by default</span>
+    <span class="c1">-- by rotating the shape half the angle between sides</span>
+    <span class="n">polygon_rotation</span> <span class="o">=</span> <span class="n">polygon_rotation</span> <span class="o">+</span> <span class="p">(</span><span class="n">polygon_angle</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="kr">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">polygon_sides</span><span class="p">,</span> <span class="mi">1</span> <span class="kr">do</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">polygon_angle</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">+</span> <span class="n">polygon_rotation</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">polygon_radius</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="nb">math.cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">polygon_radius</span>
+
+        <span class="c1">-- Translate the polygon to the desired origin</span>
+        <span class="c1">-- Since sin/cos produce values from -1 to +1 its origin is 0, 0</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">polygon_center</span><span class="p">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">polygon_center</span><span class="p">.</span><span class="n">y</span>
+        <span class="n">regular_polygon</span><span class="p">[</span><span class="o">#</span><span class="n">regular_polygon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="kr">end</span>
+
+    <span class="kr">return</span> <span class="n">regular_polygon</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p>Whoa whoa, that's a lot of code. You don't really need to understand it, but it's not quite so complicated as it first appears. The gist is that all the points of all regular sided polygons can be found around the permiter of a circle of the same size. The handy functions <code>sin</code> and <code>cos</code> take an angle and turn it into a value we can multiply by our polygon "radius" to get a point around that circle. We can get the angle to each point around the polygon from its center by dividing 360 by the number of sides and multiplying it back up again for each point.</p>
+<p>Let's overlay a polygon over a circle to prove this:</p>
+<div class="highlight"><pre><span></span><code><span class="kr">function</span> <span class="nf">init</span><span class="p">()</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">update</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">regular_polygon</span><span class="p">(</span><span class="n">polygon_center</span><span class="p">,</span> <span class="n">polygon_sides</span><span class="p">,</span> <span class="n">polygon_radius</span><span class="p">,</span> <span class="n">polygon_rotation</span><span class="p">)</span>
+    <span class="kd">local</span> <span class="n">regular_polygon</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">polygon_rotation</span> <span class="o">=</span> <span class="n">polygon_rotation</span> <span class="ow">or</span> <span class="mi">0</span>
+    <span class="n">polygon_rotation</span> <span class="o">=</span> <span class="nb">math.rad</span><span class="p">(</span><span class="n">polygon_rotation</span> <span class="o">%</span> <span class="mi">360</span><span class="p">)</span>
+
+    <span class="c1">-- The angle between each side</span>
+    <span class="n">polygon_angle</span> <span class="o">=</span> <span class="p">(</span><span class="nb">math.pi</span> <span class="o">*</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">polygon_sides</span>
+
+    <span class="c1">-- Orient the flat side down by default</span>
+    <span class="c1">-- by rotating the shape half the angle between sides</span>
+    <span class="n">polygon_rotation</span> <span class="o">=</span> <span class="n">polygon_rotation</span> <span class="o">+</span> <span class="p">(</span><span class="n">polygon_angle</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="kr">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">polygon_sides</span><span class="p">,</span> <span class="mi">1</span> <span class="kr">do</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">polygon_angle</span> <span class="o">*</span> <span class="n">i</span>
+        <span class="n">angle</span> <span class="o">=</span> <span class="n">angle</span> <span class="o">+</span> <span class="n">polygon_rotation</span>
+
+        <span class="n">x</span> <span class="o">=</span> <span class="nb">math.sin</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">polygon_radius</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="nb">math.cos</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span> <span class="o">*</span> <span class="n">polygon_radius</span>
+
+        <span class="c1">-- Translate the polygon to the desired origin</span>
+        <span class="c1">-- Since sin/cos produce values from -1 to +1 its origin is 0, 0</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">polygon_center</span><span class="p">.</span><span class="n">x</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">y</span> <span class="o">+</span> <span class="n">polygon_center</span><span class="p">.</span><span class="n">y</span>
+        <span class="n">regular_polygon</span><span class="p">[</span><span class="o">#</span><span class="n">regular_polygon</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="kr">end</span>
+
+    <span class="kr">return</span> <span class="n">regular_polygon</span>
+<span class="kr">end</span>
+
+<span class="kr">function</span> <span class="nf">render</span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">clear</span><span class="p">()</span>
+
+    <span class="c1">-- Create a point in the middle of the screen</span>
+    <span class="n">center</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="n">screen</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">w</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">screen</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">h</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+    <span class="c1">-- Draw a red circle</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">circle</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+
+    <span class="c1">-- Draw a blue regular pentagon</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">pen</span> <span class="o">=</span> <span class="n">Pen</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+    <span class="n">screen</span><span class="p">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">regular_polygon</span><span class="p">(</span><span class="n">center</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+<span class="kr">end</span>
+</code></pre></div>
+
+<p><img alt="Drawing a pentagon in 32Blit Lua" src="drawing-a-pentagon-lua.png" /></p>
+<p>Well, look at that! The five points of our pentagon all touch the edge of the circle... well, more or less, since the drawing function is a little imprecise and we don't have lots of pixels to work with. You can use the <code>regular_polygon</code> function in your code if you need to draw a regular polygon without all the pesky working out.</p>
+<blockquote>
+<p>Note: we negate the <code>y</code> axis when drawing our shape because our coordinate system goes from <code>0,0</code> in the top-left corner of the screen to <code>159,119</code> in the bottom right and is flipped vertically in relation to the Cartesian coordinates you might encounter in geometry. Indeed if we take the angle <code>0</code> as indicating the top of our circle and note that along the x-axis <code>sin(0) == 0</code> and along the y-axis <code>cos(0) == 1</code> it's clear that our shapes will be mirrored vertically without this flip.</p>
+</blockquote>
+<h2 id="challenges">Challenges</h2>
+<ol>
+<li>Can you draw a concave polygon?</li>
+<li>Can you draw an interesting scene with primitive shapes?</li>
+<li>Can you build a game based entirely on shapes?</li>
+<li>Can you create a spinning 3D cube out of polygons?</li>
+</ol>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="http://tutorials.32blit.com/tag/lua.html">lua</a>
+    </p>
+  </div>
+
+
+
+
+
+<!-- Disqus -->
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'blog-32blittutorials';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>
+    Please enable JavaScript to view comments.
+</noscript>
+<!-- End Disqus -->
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="http://tutorials.32blit.com/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 32Blit Tutorials ",
+  "url" : "http://tutorials.32blit.com",
+  "image": "",
+  "description": ""
+}
+</script>
+
+</body>
+</html>
