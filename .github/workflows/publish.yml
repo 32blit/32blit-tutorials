@@ -1,0 +1,49 @@
+name: Publish To GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Python Requirements
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: bash
+      run: |
+        pip install -r requirements.txt
+
+    - name: Checkout Flex Theme
+      uses: actions/checkout@v2
+      with:
+        repository: alexandrevicenzi/Flex
+        path: Flex
+
+    - name: Install Flex theme
+      shell: bash
+      run: |
+        pelican-themes -i Flex
+
+    - name: Build Site
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: bash
+      run: |
+        pelican -vv
+
+    - name: Copy Images
+      working-directory: ${{env.GITHUB_WORKSPACE}}
+      shell: bash
+      run: |
+        cp */*/*.png output/
+        cp */*/*.gif output/
+
+    - name: Deploy
+      uses: JamesIves/github-pages-deploy-action@4.1.4
+      with:
+        branch: gh-pages
+        folder: output
