@@ -3,7 +3,9 @@ SITENAME = "32Blit Tutorials"
 SITESUBTITLE = 'Lua and C++ Tutorials for the 32Blit handheld.'
 SITEURL = 'https://32blit.github.io/32blit-tutorials/'
 TIMEZONE = "Europe/London"
-
+SITELOGO = 'static/logo.png'
+FAVICON = 'static/favicon.png'
+CUSTOM_CSS = 'static/custom.css'
 
 THEME = 'Flex'
 THEME_COLOR = 'light'
@@ -46,7 +48,7 @@ EXTRA_PATH_METADATA = {
     }
 
 # static paths will be copied without parsing their contents
-STATIC_PATHS = []
+STATIC_PATHS = ['static']
 
 ARTICLE_PATHS = [
     'case-studies',
