@@ -1,0 +1,259 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,400;0,700;1,400&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/stylesheet/style.min.css">
+
+    <link id="dark-theme-style" rel="stylesheet" type="text/css"
+          media="(prefers-color-scheme: dark)"
+    href="https://32blit.github.io/32blit-tutorials/theme/stylesheet/dark-theme.min.css">
+
+    <link id="pygments-dark-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: dark)"
+          href="https://32blit.github.io/32blit-tutorials/theme/pygments/monokai.min.css">
+    <link id="pygments-light-theme" rel="stylesheet" type="text/css"
+              media="(prefers-color-scheme: light), (prefers-color-scheme: no-preference)"
+          href="https://32blit.github.io/32blit-tutorials/theme/pygments/vs.min.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/font-awesome/css/fontawesome.css">
+  <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/font-awesome/css/brands.css">
+  <link rel="stylesheet" type="text/css" href="https://32blit.github.io/32blit-tutorials/theme/font-awesome/css/solid.css">
+
+    <link href="https://32blit.github.io/32blit-tutorials/static/custom.css" rel="stylesheet">
+
+    <link href="https://32blit.github.io/32blit-tutorials/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="32Blit Tutorials Atom">
+
+    <link href="https://32blit.github.io/32blit-tutorials/feeds/all.rss.xml" type="application/rss+xml" rel="alternate" title="32Blit Tutorials RSS">
+
+    <link rel="shortcut icon" href="https://32blit.github.io/32blit-tutorials/static/favicon.png" type="image/x-icon">
+    <link rel="icon" href="https://32blit.github.io/32blit-tutorials/static/favicon.png" type="image/x-icon">
+
+  
+
+
+ 
+
+<meta name="author" content="Philip Howard" />
+<meta name="description" content="Getting started with C++ on the 32Blit" />
+<meta name="keywords" content="c++, tutorial">
+
+
+  <meta property="og:site_name" content="32Blit Tutorials"/>
+  <meta property="og:title" content="C++ 0. Getting Started"/>
+  <meta property="og:description" content="Getting started with C++ on the 32Blit"/>
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:url" content="https://32blit.github.io/32blit-tutorials/cplusplus-00-getting-started.html"/>
+  <meta property="og:type" content="article"/>
+  <meta property="article:published_time" content="2021-07-16 12:00:00+01:00"/>
+  <meta property="article:modified_time" content="2021-07-16 12:00:00+01:00"/>
+  <meta property="article:author" content="https://32blit.github.io/32blit-tutorials/author/philip-howard.html">
+  <meta property="article:section" content="C++"/>
+  <meta property="article:tag" content="c++"/>
+  <meta property="article:tag" content="tutorial"/>
+  <meta property="og:image" content="https://32blit.github.io/32blit-tutorials/static/logo.png">
+
+  <title>32Blit Tutorials &ndash; C++ 0. Getting Started</title>
+
+</head>
+<body >
+  <aside>
+    <div>
+      <a href="https://32blit.github.io/32blit-tutorials/">
+        <img src="https://32blit.github.io/32blit-tutorials/static/logo.png" alt="" title="">
+      </a>
+
+      <h1>
+        <a href="https://32blit.github.io/32blit-tutorials/"></a>
+      </h1>
+
+<p>Lua and C++ Tutorials for the 32Blit handheld.</p>
+
+      <nav>
+        <ul class="list">
+
+
+
+            <li>
+              <a target="_self" href="https://shop.pimoroni.com" >Pimoroni</a>
+            </li>
+            <li>
+              <a target="_self" href="https://32bilt.com" >32Blit</a>
+            </li>
+        </ul>
+      </nav>
+
+      <ul class="social">
+          <li>
+            <a  class="sc-twitter" href="http://twitter.com/32blit" target="_blank">
+              <i class="fab fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a  class="sc-github" href="http://github.com/32blit" target="_blank">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+      </ul>
+    </div>
+
+  </aside>
+  <main>
+
+    <nav>
+      <a href="https://32blit.github.io/32blit-tutorials/">Home</a>
+
+      <a href="/32blit-tutorials/category/lua.html">Lua Tutorials</a>
+      <a href="/32blit-tutorials/category/c.html">C++ Tutorials</a>
+      <a href="/32blit-tutorials/category/case-studies.html">Case Studies</a>
+
+      <a href="https://32blit.github.io/32blit-tutorials/feeds/all.atom.xml">Atom</a>
+
+      <a href="https://32blit.github.io/32blit-tutorials/feeds/all.rss.xml">RSS</a>
+    </nav>
+
+<article class="single">
+  <header>
+      
+    <h1 id="cplusplus-00-getting-started">C++ 0. Getting Started</h1>
+    <p>
+      Posted on Fri 16 July 2021 in <a href="https://32blit.github.io/32blit-tutorials/category/c.html">C++</a>
+
+    </p>
+  </header>
+
+
+  <div>
+    <ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#windows--visual-studio">Windows + Visual Studio</a><ul>
+<li><a href="#installing-visual-studio--requirements">Installing Visual Studio &amp; Requirements</a></li>
+<li><a href="#opening--configuring-your-project">Opening &amp; Configuring Your Project</a></li>
+<li><a href="#configuring-for-32blit-builds">Configuring For 32Blit Builds</a></li>
+</ul>
+</li>
+<li><a href="#linux-macos--others">Linux, macOS &amp; Others</a></li>
+</ul>
+<h2 id="introduction">Introduction</h2>
+<p>The 32blit SDK allows you to develop, debug and test your games on your computer. This tutorial will cover setting up Visual Studio on Windows.</p>
+<h2 id="windows-visual-studio">Windows + Visual Studio</h2>
+<p>To get started developing 32blit applications on Windows you'll need Visual Studio. Even if you plan to use VS Code eventually, you will need the Microsoft compilers included with Visual Studio to build &amp; test on Windows itself.</p>
+<p>We'll be relying on Visual Studio's ability to open, configure and build a CMake project.</p>
+<p>This guide is modified from the Windows/Visual Studio documentation in the 32blit SDK - https://github.com/32blit/32blit-sdk/blob/master/docs/Windows-VisualStudio.md</p>
+<h3 id="installing-visual-studio-requirements">Installing Visual Studio &amp; Requirements</h3>
+<p>You'll need:</p>
+<ul>
+<li>Visual Studio 2019 (preferably version 16.x) - <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;rel=16">Visual Studio 2019 Community Edition</a></li>
+<li>Python for Windows - <a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-amd64.exe">python-3.9.6-amd64.exe</a></li>
+<li>The latest 32blit SDK release - <a href="https://github.com/32blit/32blit-sdk/releases/latest">Grab the Source code (zip)</a></li>
+</ul>
+<p>When installing Visual Studio, make sure you select:</p>
+<ul>
+<li>
+<p>Desktop development with C++ - for Windows test builds</p>
+<p><img alt="Visual Studio Install Windows Development" src="vs-install-windows-development.png" /></p>
+</li>
+<li>
+<p>Linux development with C++ - with "Embedded and IoT development tools" - for 32blit device builds</p>
+<p><img alt="Visual Studio Install Linux Development" src="vs-install-linux-development.png" /></p>
+</li>
+</ul>
+<h3 id="opening-configuring-your-project">Opening &amp; Configuring Your Project</h3>
+<p>Use the "Open a local folder" and navigate to the 32blit SDK</p>
+<p><img alt="Visual Studio Open Local Folder" src="vs-open-local-folder.png" /></p>
+<p>Visual Studio should detect the CMake project and start configuring it immediately.</p>
+<p><img alt="Visual Studio CMake Configuring" src="vs-cmake-configuring.png" /></p>
+<p>Once it's configured, select one of the non-install startup items from the list of debug targets.</p>
+<p><img alt="Visual Studio CMake Startup Item" src="vs-startup-item.png" /></p>
+<p>And hit F5 to launch.</p>
+<p><img alt="Visual Studio Running Geometry" src="vs-running-geometry.png" /></p>
+<h3 id="configuring-for-32blit-builds">Configuring For 32Blit Builds</h3>
+<p>If you'd like to use Visual Studio to create builds that run <em>on</em> your 32Blit there are a few extra configuration steps.</p>
+<ol>
+<li>Open the CMake Settings by navigating to <code>Project</code> &gt; <code>Cmake Settings</code></li>
+<li>Press "Add new configuration..." and select "IoT-Release".</li>
+<li>Scroll down to "CMake toolchain file" and browse to <code>32blit.toolchain</code> in the root of the 32Blit SDK</li>
+<li>(Optional) Change the configuration name to something like "32Blit-Release"</li>
+<li>Save (Ctrl+S works in settings views)</li>
+<li>Press "Edit JSON", scroll down to the new configuration and delete the contents of the <code>variables</code> array. The result should look like this:
+    <code>json
+    // other configs...
+    {
+      "name": "32Blit-Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "gcc-arm" ],
+      "variables": [],
+      "intelliSenseMode": "linux-gcc-arm",
+      "cmakeToolchain": "[path...]/32blit-sdk/32blit.toolchain"
+    }
+    //...</code></li>
+<li>To work around a bug in Visual Studio you should also add:<div class="highlight"><pre><span></span><code><span class="n n-Quoted">`</span><span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">json</span>
+<span class="n n-Quoted">&quot;environments&quot;: [ { &quot;PATH&quot;: &quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&quot; } ]</span>
+<span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">`</span>
+<span class="n">This</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">Visual</span> <span class="n">Studio</span> <span class="n">can</span> <span class="n">find</span> <span class="n n-Quoted">`cmd.exe`</span> <span class="k">when</span> <span class="n">building</span> <span class="n">the</span> <span class="n">project</span><span class="p">,</span> <span class="k">and</span> <span class="n">that</span> <span class="n">it</span> <span class="n">also</span> <span class="n">prefers</span> <span class="n">its</span> <span class="n">own</span> <span class="n">copies</span> <span class="k">of</span> <span class="n">the</span> <span class="n">ARM</span> <span class="n">GCC</span> <span class="n">tools</span> <span class="k">over</span> <span class="n">those</span> <span class="n">that</span> <span class="n">might</span> <span class="n">be</span> <span class="n">elsewhere</span> <span class="k">in</span> <span class="n">your</span> <span class="n n-Quoted">`PATH`</span><span class="p">.</span>
+</code></pre></div>
+
+</li>
+</ol>
+<p>As before, select your preferred target from the drop-down list and build it. Note that the output will be a <code>.blit</code> file which you need to flash to your device using <code>32blit install game.blit</code>.</p>
+<h2 id="linux-macos-others">Linux, macOS &amp; Others</h2>
+<p>The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="https://32blit.github.io/32blit-tutorials/tag/c.html">c++</a>
+      <a href="https://32blit.github.io/32blit-tutorials/tag/tutorial.html">tutorial</a>
+    </p>
+  </div>
+
+
+
+
+
+</article>
+
+    <footer>
+<p>&copy;  </p>
+<p>
+Built with <a href="http://getpelican.com" target="_blank">Pelican</a> using <a href="http://bit.ly/flex-pelican" target="_blank">Flex</a> theme
+  <span class="footer-separator">|</span>
+  Switch to the <a href="javascript:void(0)" onclick="theme.switch(`dark`)">dark</a> | <a href="javascript:void(0)" onclick="theme.switch(`light`)">light</a> | <a href="javascript:void(0)" onclick="theme.switch(`browser`)">browser</a> theme
+  <script id="dark-theme-script"
+          src="https://32blit.github.io/32blit-tutorials/theme/dark-theme/dark-theme.min.js"
+          data-enable-auto-detect-theme="True"
+          data-default-theme="light"
+          type="text/javascript">
+  </script>
+</p>    </footer>
+  </main>
+
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " 32Blit Tutorials ",
+  "url" : "https://32blit.github.io/32blit-tutorials",
+  "image": "https://32blit.github.io/32blit-tutorials/static/logo.png",
+  "description": ""
+}
+</script>
+
+</body>
+</html>

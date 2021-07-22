@@ -1,2 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>32Blit Tutorials - C++</title><link href="https://32blit.github.io/32blit-tutorials/" rel="alternate"></link><link href="https://32blit.github.io/32blit-tutorials/feeds/c.atom.xml" rel="self"></link><id>https://32blit.github.io/32blit-tutorials/</id><updated>2021-07-02T14:00:00+01:00</updated><subtitle>Lua and C++ Tutorials for the 32Blit handheld.</subtitle><entry><title>C++ 1. Particle Effects</title><link href="https://32blit.github.io/32blit-tutorials/c++-01-particle-effects.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/c++-01-particle-effects.html</id><summary type="html">&lt;p&gt;C++ Particle Effects on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;h1 id="1-particle-effects"&gt;1. Particle Effects&lt;/h1&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry></feed>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>32Blit Tutorials - C++</title><link href="https://32blit.github.io/32blit-tutorials/" rel="alternate"></link><link href="https://32blit.github.io/32blit-tutorials/feeds/c.atom.xml" rel="self"></link><id>https://32blit.github.io/32blit-tutorials/</id><updated>2021-07-16T12:00:00+01:00</updated><subtitle>Lua and C++ Tutorials for the 32Blit handheld.</subtitle><entry><title>C++ 0. Getting Started</title><link href="https://32blit.github.io/32blit-tutorials/cplusplus-00-getting-started.html" rel="alternate"></link><published>2021-07-16T12:00:00+01:00</published><updated>2021-07-16T12:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-16:/32blit-tutorials/cplusplus-00-getting-started.html</id><summary type="html">&lt;p&gt;Getting started with C++ on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#introduction"&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#windows--visual-studio"&gt;Windows + Visual Studio&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href="#installing-visual-studio--requirements"&gt;Installing Visual Studio &amp;amp; Requirements&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#opening--configuring-your-project"&gt;Opening &amp;amp; Configuring Your Project&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#configuring-for-32blit-builds"&gt;Configuring For 32Blit Builds&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href="#linux-macos--others"&gt;Linux, macOS &amp;amp; Others&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;The 32blit SDK allows you to develop, debug and test your games on your computer. This tutorial will cover setting up Visual Studio on Windows.&lt;/p&gt;
+&lt;h2 id="windows-visual-studio"&gt;Windows + Visual Studio&lt;/h2&gt;
+&lt;p&gt;To get started developing 32blit applications on Windows you'll need Visual Studio. Even if you plan to use VS Code eventually, you will need the Microsoft compilers included with Visual Studio to build &amp;amp; test on Windows itself.&lt;/p&gt;
+&lt;p&gt;We'll be relying on Visual Studio's ability to open, configure and build a CMake project.&lt;/p&gt;
+&lt;p&gt;This guide is modified from the Windows/Visual Studio documentation in the 32blit SDK - https://github.com/32blit/32blit-sdk/blob/master/docs/Windows-VisualStudio.md&lt;/p&gt;
+&lt;h3 id="installing-visual-studio-requirements"&gt;Installing Visual Studio &amp;amp; Requirements&lt;/h3&gt;
+&lt;p&gt;You'll need:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Visual Studio 2019 (preferably version 16.x) - &lt;a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;amp;rel=16"&gt;Visual Studio 2019 Community Edition&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Python for Windows - &lt;a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-amd64.exe"&gt;python-3.9.6-amd64.exe&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;The latest 32blit SDK release - &lt;a href="https://github.com/32blit/32blit-sdk/releases/latest"&gt;Grab the Source code (zip)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When installing Visual Studio, make sure you select:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Desktop development with C++ - for Windows test builds&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Studio Install Windows Development" src="vs-install-windows-development.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linux development with C++ - with "Embedded and IoT development tools" - for 32blit device builds&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Studio Install Linux Development" src="vs-install-linux-development.png" /&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="opening-configuring-your-project"&gt;Opening &amp;amp; Configuring Your Project&lt;/h3&gt;
+&lt;p&gt;Use the "Open a local folder" and navigate to the 32blit SDK&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Studio Open Local Folder" src="vs-open-local-folder.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Visual Studio should detect the CMake project and start configuring it immediately.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Studio CMake Configuring" src="vs-cmake-configuring.png" /&gt;&lt;/p&gt;
+&lt;p&gt;Once it's configured, select one of the non-install startup items from the list of debug targets.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Studio CMake Startup Item" src="vs-startup-item.png" /&gt;&lt;/p&gt;
+&lt;p&gt;And hit F5 to launch.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Visual Studio Running Geometry" src="vs-running-geometry.png" /&gt;&lt;/p&gt;
+&lt;h3 id="configuring-for-32blit-builds"&gt;Configuring For 32Blit Builds&lt;/h3&gt;
+&lt;p&gt;If you'd like to use Visual Studio to create builds that run &lt;em&gt;on&lt;/em&gt; your 32Blit there are a few extra configuration steps.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Open the CMake Settings by navigating to &lt;code&gt;Project&lt;/code&gt; &amp;gt; &lt;code&gt;Cmake Settings&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Press "Add new configuration..." and select "IoT-Release".&lt;/li&gt;
+&lt;li&gt;Scroll down to "CMake toolchain file" and browse to &lt;code&gt;32blit.toolchain&lt;/code&gt; in the root of the 32Blit SDK&lt;/li&gt;
+&lt;li&gt;(Optional) Change the configuration name to something like "32Blit-Release"&lt;/li&gt;
+&lt;li&gt;Save (Ctrl+S works in settings views)&lt;/li&gt;
+&lt;li&gt;Press "Edit JSON", scroll down to the new configuration and delete the contents of the &lt;code&gt;variables&lt;/code&gt; array. The result should look like this:
+    &lt;code&gt;json
+    // other configs...
+    {
+      "name": "32Blit-Release",
+      "generator": "Ninja",
+      "configurationType": "Release",
+      "buildRoot": "${projectDir}\\out\\build\\${name}",
+      "installRoot": "${projectDir}\\out\\install\\${name}",
+      "cmakeCommandArgs": "",
+      "buildCommandArgs": "",
+      "ctestCommandArgs": "",
+      "inheritEnvironments": [ "gcc-arm" ],
+      "variables": [],
+      "intelliSenseMode": "linux-gcc-arm",
+      "cmakeToolchain": "[path...]/32blit-sdk/32blit.toolchain"
+    }
+    //...&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;To work around a bug in Visual Studio you should also add:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n n-Quoted"&gt;`&lt;/span&gt;&lt;span class="n n-Quoted n-Quoted-Escape"&gt;``&lt;/span&gt;&lt;span class="n n-Quoted"&gt;json&lt;/span&gt;
+&lt;span class="n n-Quoted"&gt;&amp;quot;environments&amp;quot;: [ { &amp;quot;PATH&amp;quot;: &amp;quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&amp;quot; } ]&lt;/span&gt;
+&lt;span class="n n-Quoted n-Quoted-Escape"&gt;``&lt;/span&gt;&lt;span class="n n-Quoted"&gt;`&lt;/span&gt;
+&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;ensures&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;Visual&lt;/span&gt; &lt;span class="n"&gt;Studio&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n n-Quoted"&gt;`cmd.exe`&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;building&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;also&lt;/span&gt; &lt;span class="n"&gt;prefers&lt;/span&gt; &lt;span class="n"&gt;its&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;copies&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;ARM&lt;/span&gt; &lt;span class="n"&gt;GCC&lt;/span&gt; &lt;span class="n"&gt;tools&lt;/span&gt; &lt;span class="k"&gt;over&lt;/span&gt; &lt;span class="n"&gt;those&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;elsewhere&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n n-Quoted"&gt;`PATH`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;As before, select your preferred target from the drop-down list and build it. Note that the output will be a &lt;code&gt;.blit&lt;/code&gt; file which you need to flash to your device using &lt;code&gt;32blit install game.blit&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id="linux-macos-others"&gt;Linux, macOS &amp;amp; Others&lt;/h2&gt;
+&lt;p&gt;The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs&lt;/p&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry><entry><title>C++ 1. Particle Effects</title><link href="https://32blit.github.io/32blit-tutorials/c++-01-particle-effects.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/c++-01-particle-effects.html</id><summary type="html">&lt;p&gt;C++ Particle Effects on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;h1 id="1-particle-effects"&gt;1. Particle Effects&lt;/h1&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry></feed>
