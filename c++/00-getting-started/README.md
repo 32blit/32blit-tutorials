@@ -72,30 +72,26 @@ If you'd like to use Visual Studio to create builds that run *on* your 32Blit th
 4. (Optional) Change the configuration name to something like "32Blit-Release"
 5. Save (Ctrl+S works in settings views)
 6. Press "Edit JSON", scroll down to the new configuration and delete the contents of the `variables` array. The result should look like this:
-    ```json
-    // other configs...
-    {
-      "name": "32Blit-Release",
-      "generator": "Ninja",
-      "configurationType": "Release",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "inheritEnvironments": [ "gcc-arm" ],
-      "variables": [],
-      "intelliSenseMode": "linux-gcc-arm",
-      "cmakeToolchain": "[path...]/32blit-sdk/32blit.toolchain"
-    }
-    //...
-    ```
-7. To work around a bug in Visual Studio you should also add:
-
-    ```json
-    "environments": [ { "PATH": "${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}" } ]
-    ```
-    This ensures that Visual Studio can find `cmd.exe` when building the project, and that it also prefers its own copies of the ARM GCC tools over those that might be elsewhere in your `PATH`.
+```json
+{
+  "name": "32Blit-Release",
+  "generator": "Ninja",
+  "configurationType": "Release",
+  "buildRoot": "${projectDir}\\out\\build\\${name}",
+  "installRoot": "${projectDir}\\out\\install\\${name}",
+  "cmakeCommandArgs": "",
+  "buildCommandArgs": "",
+  "ctestCommandArgs": "",
+  "inheritEnvironments": [ "gcc-arm" ],
+  "variables": [],
+  "intelliSenseMode": "linux-gcc-arm",
+  "cmakeToolchain": "[path...]/32blit-sdk/32blit.toolchain"
+}
+```
+7. To work around a bug in Visual Studio you should also add a tweak to `"environments"`. This ensures that Visual Studio can find `cmd.exe` when building the project, and that it also prefers its own copies of the ARM GCC tools over those that might be elsewhere in your `PATH`:
+```json
+"environments": [ { "PATH": "${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}" } ]
+```
 
 As before, select your preferred target from the drop-down list and build it. Note that the output will be a `.blit` file which you need to flash to your device using `32blit install game.blit`.
 
