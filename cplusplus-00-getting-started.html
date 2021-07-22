@@ -183,32 +183,30 @@
 <li>Scroll down to "CMake toolchain file" and browse to <code>32blit.toolchain</code> in the root of the 32Blit SDK</li>
 <li>(Optional) Change the configuration name to something like "32Blit-Release"</li>
 <li>Save (Ctrl+S works in settings views)</li>
-<li>Press "Edit JSON", scroll down to the new configuration and delete the contents of the <code>variables</code> array. The result should look like this:
-    <code>json
-    // other configs...
-    {
-      "name": "32Blit-Release",
-      "generator": "Ninja",
-      "configurationType": "Release",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "inheritEnvironments": [ "gcc-arm" ],
-      "variables": [],
-      "intelliSenseMode": "linux-gcc-arm",
-      "cmakeToolchain": "[path...]/32blit-sdk/32blit.toolchain"
-    }
-    //...</code></li>
-<li>To work around a bug in Visual Studio you should also add:<div class="highlight"><pre><span></span><code><span class="n n-Quoted">`</span><span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">json</span>
-<span class="n n-Quoted">&quot;environments&quot;: [ { &quot;PATH&quot;: &quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&quot; } ]</span>
-<span class="n n-Quoted n-Quoted-Escape">``</span><span class="n n-Quoted">`</span>
-<span class="n">This</span> <span class="n">ensures</span> <span class="n">that</span> <span class="n">Visual</span> <span class="n">Studio</span> <span class="n">can</span> <span class="n">find</span> <span class="n n-Quoted">`cmd.exe`</span> <span class="k">when</span> <span class="n">building</span> <span class="n">the</span> <span class="n">project</span><span class="p">,</span> <span class="k">and</span> <span class="n">that</span> <span class="n">it</span> <span class="n">also</span> <span class="n">prefers</span> <span class="n">its</span> <span class="n">own</span> <span class="n">copies</span> <span class="k">of</span> <span class="n">the</span> <span class="n">ARM</span> <span class="n">GCC</span> <span class="n">tools</span> <span class="k">over</span> <span class="n">those</span> <span class="n">that</span> <span class="n">might</span> <span class="n">be</span> <span class="n">elsewhere</span> <span class="k">in</span> <span class="n">your</span> <span class="n n-Quoted">`PATH`</span><span class="p">.</span>
+<li>Press "Edit JSON", scroll down to the new configuration and delete the contents of the <code>variables</code> array. The result should look like this:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;32Blit-Release&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;generator&quot;</span><span class="p">:</span> <span class="s2">&quot;Ninja&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;configurationType&quot;</span><span class="p">:</span> <span class="s2">&quot;Release&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;buildRoot&quot;</span><span class="p">:</span> <span class="s2">&quot;${projectDir}\\out\\build\\${name}&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;installRoot&quot;</span><span class="p">:</span> <span class="s2">&quot;${projectDir}\\out\\install\\${name}&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cmakeCommandArgs&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;buildCommandArgs&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;ctestCommandArgs&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;inheritEnvironments&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;gcc-arm&quot;</span> <span class="p">],</span>
+  <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="p">[],</span>
+  <span class="nt">&quot;intelliSenseMode&quot;</span><span class="p">:</span> <span class="s2">&quot;linux-gcc-arm&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;cmakeToolchain&quot;</span><span class="p">:</span> <span class="s2">&quot;[path...]/32blit-sdk/32blit.toolchain&quot;</span>
+<span class="p">}</span>
 </code></pre></div>
 
-</li>
+<ol start="7">
+<li>To work around a bug in Visual Studio you should also add a tweak to <code>"environments"</code>. This ensures that Visual Studio can find <code>cmd.exe</code> when building the project, and that it also prefers its own copies of the ARM GCC tools over those that might be elsewhere in your <code>PATH</code>:</li>
 </ol>
+<div class="highlight"><pre><span></span><code><span class="nt">&quot;environments&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="nt">&quot;PATH&quot;</span><span class="p">:</span> <span class="s2">&quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&quot;</span> <span class="p">}</span> <span class="p">]</span>
+</code></pre></div>
+
 <p>As before, select your preferred target from the drop-down list and build it. Note that the output will be a <code>.blit</code> file which you need to flash to your device using <code>32blit install game.blit</code>.</p>
 <h2 id="linux-macos-others">Linux, macOS &amp; Others</h2>
 <p>The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs</p>

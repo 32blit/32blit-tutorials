@@ -50,32 +50,30 @@
 &lt;li&gt;Scroll down to "CMake toolchain file" and browse to &lt;code&gt;32blit.toolchain&lt;/code&gt; in the root of the 32Blit SDK&lt;/li&gt;
 &lt;li&gt;(Optional) Change the configuration name to something like "32Blit-Release"&lt;/li&gt;
 &lt;li&gt;Save (Ctrl+S works in settings views)&lt;/li&gt;
-&lt;li&gt;Press "Edit JSON", scroll down to the new configuration and delete the contents of the &lt;code&gt;variables&lt;/code&gt; array. The result should look like this:
-    &lt;code&gt;json
-    // other configs...
-    {
-      "name": "32Blit-Release",
-      "generator": "Ninja",
-      "configurationType": "Release",
-      "buildRoot": "${projectDir}\\out\\build\\${name}",
-      "installRoot": "${projectDir}\\out\\install\\${name}",
-      "cmakeCommandArgs": "",
-      "buildCommandArgs": "",
-      "ctestCommandArgs": "",
-      "inheritEnvironments": [ "gcc-arm" ],
-      "variables": [],
-      "intelliSenseMode": "linux-gcc-arm",
-      "cmakeToolchain": "[path...]/32blit-sdk/32blit.toolchain"
-    }
-    //...&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;To work around a bug in Visual Studio you should also add:&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="n n-Quoted"&gt;`&lt;/span&gt;&lt;span class="n n-Quoted n-Quoted-Escape"&gt;``&lt;/span&gt;&lt;span class="n n-Quoted"&gt;json&lt;/span&gt;
-&lt;span class="n n-Quoted"&gt;&amp;quot;environments&amp;quot;: [ { &amp;quot;PATH&amp;quot;: &amp;quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&amp;quot; } ]&lt;/span&gt;
-&lt;span class="n n-Quoted n-Quoted-Escape"&gt;``&lt;/span&gt;&lt;span class="n n-Quoted"&gt;`&lt;/span&gt;
-&lt;span class="n"&gt;This&lt;/span&gt; &lt;span class="n"&gt;ensures&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;Visual&lt;/span&gt; &lt;span class="n"&gt;Studio&lt;/span&gt; &lt;span class="n"&gt;can&lt;/span&gt; &lt;span class="n"&gt;find&lt;/span&gt; &lt;span class="n n-Quoted"&gt;`cmd.exe`&lt;/span&gt; &lt;span class="k"&gt;when&lt;/span&gt; &lt;span class="n"&gt;building&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;project&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="k"&gt;and&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;it&lt;/span&gt; &lt;span class="n"&gt;also&lt;/span&gt; &lt;span class="n"&gt;prefers&lt;/span&gt; &lt;span class="n"&gt;its&lt;/span&gt; &lt;span class="n"&gt;own&lt;/span&gt; &lt;span class="n"&gt;copies&lt;/span&gt; &lt;span class="k"&gt;of&lt;/span&gt; &lt;span class="n"&gt;the&lt;/span&gt; &lt;span class="n"&gt;ARM&lt;/span&gt; &lt;span class="n"&gt;GCC&lt;/span&gt; &lt;span class="n"&gt;tools&lt;/span&gt; &lt;span class="k"&gt;over&lt;/span&gt; &lt;span class="n"&gt;those&lt;/span&gt; &lt;span class="n"&gt;that&lt;/span&gt; &lt;span class="n"&gt;might&lt;/span&gt; &lt;span class="n"&gt;be&lt;/span&gt; &lt;span class="n"&gt;elsewhere&lt;/span&gt; &lt;span class="k"&gt;in&lt;/span&gt; &lt;span class="n"&gt;your&lt;/span&gt; &lt;span class="n n-Quoted"&gt;`PATH`&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;
+&lt;li&gt;Press "Edit JSON", scroll down to the new configuration and delete the contents of the &lt;code&gt;variables&lt;/code&gt; array. The result should look like this:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="p"&gt;{&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;name&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;32Blit-Release&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;generator&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Ninja&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;configurationType&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Release&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;buildRoot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${projectDir}\\out\\build\\${name}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;installRoot&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${projectDir}\\out\\install\\${name}&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;cmakeCommandArgs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;buildCommandArgs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;ctestCommandArgs&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;inheritEnvironments&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;gcc-arm&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;variables&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[],&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;intelliSenseMode&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;linux-gcc-arm&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+  &lt;span class="nt"&gt;&amp;quot;cmakeToolchain&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;[path...]/32blit-sdk/32blit.toolchain&amp;quot;&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
-&lt;/li&gt;
+&lt;ol start="7"&gt;
+&lt;li&gt;To work around a bug in Visual Studio you should also add a tweak to &lt;code&gt;"environments"&lt;/code&gt;. This ensures that Visual Studio can find &lt;code&gt;cmd.exe&lt;/code&gt; when building the project, and that it also prefers its own copies of the ARM GCC tools over those that might be elsewhere in your &lt;code&gt;PATH&lt;/code&gt;:&lt;/li&gt;
 &lt;/ol&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="nt"&gt;&amp;quot;environments&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt; &lt;span class="nt"&gt;&amp;quot;PATH&amp;quot;&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&amp;quot;&lt;/span&gt; &lt;span class="p"&gt;}&lt;/span&gt; &lt;span class="p"&gt;]&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 &lt;p&gt;As before, select your preferred target from the drop-down list and build it. Note that the output will be a &lt;code&gt;.blit&lt;/code&gt; file which you need to flash to your device using &lt;code&gt;32blit install game.blit&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id="linux-macos-others"&gt;Linux, macOS &amp;amp; Others&lt;/h2&gt;
 &lt;p&gt;The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs&lt;/p&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry><entry><title>C++ 1. Particle Effects</title><link href="https://32blit.github.io/32blit-tutorials/c++-01-particle-effects.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/c++-01-particle-effects.html</id><summary type="html">&lt;p&gt;C++ Particle Effects on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;h1 id="1-particle-effects"&gt;1. Particle Effects&lt;/h1&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry><entry><title>Lua 0. Getting Started</title><link href="https://32blit.github.io/32blit-tutorials/lua-00-getting-started.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/lua-00-getting-started.html</id><summary type="html">&lt;p&gt;Getting started with Lua on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
