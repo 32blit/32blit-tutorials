@@ -1,3 +1,55 @@
 aside div img {
     border-radius: 0;
 }
+
+a {
+    color: #007700;
+}
+
+a:hover {
+    color: #00AA00;
+}
+
+main article :not(pre) > code {
+    color: #008800;
+}
+
+.dark-theme main article :not(pre) > code {
+    color: #00ff00;
+}
+
+.dark-theme main a {
+    color: #00cc00;
+}
+
+.dark-theme main a:hover {
+    color: #00ff00;
+}
+
+.tag-cloud a {
+    background-color: #00AA00;
+    color: #ffffff;
+}
+
+.tag-cloud a:hover {
+    background-color: #00cc00;
+    color: #ffffff;
+}
+
+.dark-theme .tag-cloud a {
+    background-color: #444444;
+}
+
+.dark-theme .tag-cloud a:hover {
+    background-color: #888888;
+}
+
+a.btn, 
+section#isso-thread section.auth-section p.post-action input {
+    background-color: #666666;
+}
+
+a.btn:hover {
+    background-color: #888888;
+    color: #ffffff;
+}
