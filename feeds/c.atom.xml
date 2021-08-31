@@ -76,4 +76,114 @@
 
 &lt;p&gt;As before, select your preferred target from the drop-down list and build it. Note that the output will be a &lt;code&gt;.blit&lt;/code&gt; file which you need to flash to your device using &lt;code&gt;32blit install game.blit&lt;/code&gt;.&lt;/p&gt;
 &lt;h2 id="linux-macos-others"&gt;Linux, macOS &amp;amp; Others&lt;/h2&gt;
-&lt;p&gt;The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs&lt;/p&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry><entry><title>C++ 1. Particle Effects</title><link href="https://32blit.github.io/32blit-tutorials/c++-01-particle-effects.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Philip Howard</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/c++-01-particle-effects.html</id><summary type="html">&lt;p&gt;C++ Particle Effects on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;h1 id="1-particle-effects"&gt;1. Particle Effects&lt;/h1&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry></feed>
+&lt;p&gt;The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs&lt;/p&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry><entry><title>C++ 1. Particle Effects</title><link href="https://32blit.github.io/32blit-tutorials/c++-01-particle-effects.html" rel="alternate"></link><published>2021-07-02T14:00:00+01:00</published><updated>2021-07-02T14:00:00+01:00</updated><author><name>Jon Williamson</name></author><id>tag:32blit.github.io,2021-07-02:/32blit-tutorials/c++-01-particle-effects.html</id><summary type="html">&lt;p&gt;C++ Particle Effects on the 32Blit&lt;/p&gt;</summary><content type="html">&lt;ul&gt;
+&lt;li&gt;&lt;a href="#introduction"&gt;Introduction&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#how-do-they-work"&gt;How do they work?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#before-we-start"&gt;Before we start&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#an-example-in-C"&gt;An example in C++&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="#taking-it-further"&gt;Taking it further&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="introduction"&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;Particle effects are a great way to make your games feel richer or add interesting environmental mechanics. &lt;/p&gt;
+&lt;p&gt;It's important to apply them with care, though, as overuse can make things confusing and distracting for the player. Treat them as the final layer of polish rather than the main focus and you can't go far wrong.&lt;/p&gt;
+&lt;h2 id="how-do-they-work"&gt;How do they work?&lt;/h2&gt;
+&lt;p&gt;The core concept behind implementing particle effects is to generate a collection of simple entities which have some sort of behaviour attached to them. For each frame rendered you update the entities based on their behaviour rules and draw them to screen.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Each particle is a tiny little automaton that exists in your game world. They live and die by their own rules!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Take, for example, the weather.&lt;/p&gt;
+&lt;p&gt;We want to create a rain effect in our game to enhance the moodiness of an outdoor level. Often, to apply an effect like this, you would fake it by just drawing something that looks a bit like rain and animating it over the scene.&lt;/p&gt;
+&lt;p&gt;In our game, however, we want the rain to strike surfaces and bounce off, we want it to hit the protagonist and splash and pool. To achieve that we must create an approximate model of real water falling from a real sky.&lt;/p&gt;
+&lt;h2 id="before-we-start"&gt;Before we start&lt;/h2&gt;
+&lt;p&gt;When it comes to implementing our particle effect there are a few considerations we need to be aware of...&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Quantity&lt;/strong&gt;: 
+How many particles will we model at once? This decision is driven by the aesthetic you want to create, is it a torrential rain or just a light drizzle? It also has important ramifications for performance since each particle must be separately updated and drawn each frame.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Life-cycle&lt;/strong&gt;:
+How long will our particles live? Since we can only have a fixed number of particles we need to decide how long they will exist for so that "expired" particles can be re-used.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;32blit&lt;/strong&gt; has a powerful 400MHz processor so we can model some pretty complex behaviours and still smash out those frames.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Behaviour&lt;/strong&gt;:
+We need to reduce our behaviour down to a simple set of rules which can be applied to each particle every frame. These rules ideally shouldn't involve a lot of complex maths since we will be potentially be processing them tens of thousands of times a second (for example if we have 250 particles on screen at 50 frames per second).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Appearance&lt;/strong&gt;:
+Particles are a great opportunity to play with alpha blending and layering. As they cluster and separate based on the rules implemented you can create some really interesting interactions and create surprisingly realistic and organic feeling effects.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Once we have an idea of the answers to these questions things can start to take shape.&lt;/p&gt;
+&lt;h2 id="an-example-in-c"&gt;An example in C++&lt;/h2&gt;
+&lt;p&gt;In &lt;strong&gt;32blit&lt;/strong&gt; we provide you with a pre-built particle generator, it's a module which manages the creation and lifecycle of your particles (the fiddly boring bit).&lt;/p&gt;
+&lt;p&gt;All you need to do is provide two small bits of code:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Here we're using C++ but you can do exactly the same thing in Lua!&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Setup function&lt;/strong&gt;: Sets up the initial position and velocity.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Update function&lt;/strong&gt;: Update the velocity (optional).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The particle generator takes care of the rest, constantly updating the particle positions and ages each time the game engine ticks and creating/destroying particles as required.&lt;/p&gt;
+&lt;p&gt;Let's take a look at how our rain could be implemented... &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;setup_rain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;particle&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// new drops appear at the top of the screen&lt;/span&gt;
+    &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;            
+    &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;x&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;std&lt;/span&gt;&lt;span class="o"&gt;::&lt;/span&gt;&lt;span class="n"&gt;rand&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt; &lt;span class="o"&gt;%&lt;/span&gt; &lt;span class="mi"&gt;120&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;    
+
+    &lt;span class="c1"&gt;// travel at 100 pixels per second down the screen&lt;/span&gt;
+    &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;vel&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;vec2&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;                   
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;update_rain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;particle&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// if the particle hits the bottom of the screen...&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;&amp;gt;=&lt;/span&gt; &lt;span class="mi"&gt;239&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;y&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;239&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+
+&lt;span class="kt"&gt;uint16_t&lt;/span&gt; &lt;span class="n"&gt;count&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;250&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="kt"&gt;uint16_t&lt;/span&gt; &lt;span class="n"&gt;lifetime&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;4000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// 4 seconds&lt;/span&gt;
+&lt;span class="n"&gt;particle_generator&lt;/span&gt; &lt;span class="nf"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;count&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;lifetime&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;setup_rain&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;update_rain&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;When we come to render our frame we can just loop over the list of particles in the generator and draw them to the framebuffer however we want.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="kt"&gt;void&lt;/span&gt; &lt;span class="nf"&gt;render&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="kt"&gt;uint32_t&lt;/span&gt; &lt;span class="n"&gt;time_ms&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="c1"&gt;// raindrops keep falling on my head...&lt;/span&gt;
+    &lt;span class="n"&gt;fb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pen&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rgba&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;128&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;255&lt;/span&gt;&lt;span class="p"&gt;));&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="k"&gt;auto&lt;/span&gt; &lt;span class="o"&gt;&amp;amp;&lt;/span&gt;&lt;span class="nl"&gt;p&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;rain&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;particles&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;fb&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pixel&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;p&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;pos&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+&lt;p&gt;And here's the result...&lt;/p&gt;
+&lt;video width="640" loop autoplay muted playsinline&gt;
+    &lt;source src="simple-rain-1.mp4" type="video/mp4"&gt;
+    Sorry, your browser doesn't support embedded videos.
+&lt;/video&gt;
+&lt;p&gt;&lt;em&gt;Just a few lines of code and it's pretty good!&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;Et voila! We have a torrent of blue pixels falling down the screen and landing at the bottom. The lifetime of the particles means they also "pool" for a while before being removed and reused.&lt;/p&gt;
+&lt;p&gt;It's not bad but we can do so much more...&lt;/p&gt;
+&lt;h2 id="taking-it-further"&gt;Taking it further&lt;/h2&gt;
+&lt;p&gt;This was a very simple example, all of our particles were the same, we didn't do any complicated collision detection, and we drew them as single blue pixels. Let's take this example much further by exploring:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Collision detection against your game world&lt;/li&gt;
+&lt;li&gt;Include gravity so that the particles accelerate over time&lt;/li&gt;
+&lt;li&gt;Add a "bounce" to the rain drops when they hit the ground&lt;/li&gt;
+&lt;li&gt;Draw elongated drops when moving faster&lt;/li&gt;
+&lt;li&gt;Alpha blend the raindrops with the background scenery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Each of these improvements will make our rain effect more compelling and interesting.&lt;/p&gt;
+&lt;video width="640" loop autoplay muted playsinline&gt;
+    &lt;source src="particle-effects.mp4" type="video/mp4"&gt;
+    Sorry, your browser doesn't support embedded videos.
+&lt;/video&gt;
+&lt;p&gt;&lt;em&gt;In the tutorials we'll cover other effects&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;See how the rain interacts with the logo in the corner, splashing on the top and dripping from the side. The same techniques are used to generate spark and smoke effects.&lt;/p&gt;</content><category term="C++"></category><category term="c++"></category><category term="tutorial"></category></entry></feed>
