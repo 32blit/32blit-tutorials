@@ -12,7 +12,7 @@ The key concepts we'll cover here will be:
 
 # Random generation
 
-We don't want to necessarily have to design each level by hand. We can just say "We want so many rocks, diamonds and dirt." and then tweak the bits we care about. Since we want the levels to be the same each time (for now), we need deterministic randomness. Then when we get a playable level, it won't potentially break on us, by being randomly unplayable.
+We don't want to necessarily have to design each level by hand. We can just say "We want so many rocks, diamonds and dirt." and then tweak the bits we care about. Since we want the levels to be the same each time (for now), we need deterministic randomness. Then when we get a playable level it won't potentially break on us by being randomly unplayable.
 
 ## Seeds of construction
 
