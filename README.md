@@ -53,6 +53,16 @@ These ideas will not come when you bid them to. They’ll appear at odd points. 
 
 ## The Tutorials
 
+### Introductions
+
+1. [Tile Maps](general/0-tilemaps/README.md)
+2. [Screen Modes](general/1-screen-modes/README.md)
+3. [Tilt](general/2-tilt/README.md)
+4. [Floating Point](general/3-floating-point/README.md)
+5. [Palette Swaps](general/4-palette-swaps/README.md)
+6. [Sprites](general/5-sprites/README.md)
+7. [Sprites & Where To Find Them](general/6-choose-your-own-sprite-venture/README.md)
+
 ### C++
 
 1. [Particle Effects](c++/01-particle-effects/README.md)
@@ -70,7 +80,6 @@ These ideas will not come when you bid them to. They’ll appear at odd points. 
 Appendix A: [Case Study: Rainbow Ascent](case-studies/rainbow-ascent/README.md)
 Appendix B: [Case Study: Rocks 'n' Diamonds](case-studies/rocks-n-diamonds/README.md)
 Appexdix C: [Tutorial: Super Simple Snake](https://github.com/32blit/snake)
-
 
 ### Lua
 

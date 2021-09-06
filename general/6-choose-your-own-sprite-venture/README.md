@@ -1,3 +1,23 @@
+Title: Choose your own sprite-venture!
+Date: 2021-07-16 12:00
+Modified: 2021-07-16 12:00
+Category: Introduction
+Tags: tutorial
+Slug: intro-7-choose-your-own-sprite-venture
+Authors: Jon Williamson
+Summary: Check out the results of our stretch-goal sprites vote and get a sneak preview of the other spritesheets
+
+- [Introduction](#introduction)
+- [Stretch goal sprites](#stretch-goal-sprites)
+    - [#1. Sci-Fi Top-Down Shooter](#1--sci-fi-top-down-shooter)
+    - [#2. Sprite smorgasbord](#2--sprite-smorgasbord)
+- [Platformer](#platformer)
+- [Shmup](#shmup)
+- [RPG](#rpg)
+- [License](#license)
+
+## Introduction
+
 ---
 layout: post
 title:  "Choose your own sprite-venture!"

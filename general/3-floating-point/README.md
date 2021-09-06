@@ -1,13 +1,17 @@
----
-layout: post
-title:  "Floating point"
-date:   2019-05-30 05:00:00 +0100
-categories: introduction
-summary: "What can we expect from the STM32H750 hardware floating point unit performance wise?"
-tracker: "7cggim"
-list_image: "banner.png"
-published: true
----
+Title: Floating point
+Date: 2021-07-16 12:00
+Modified: 2021-07-16 12:00
+Category: Introduction
+Tags: tutorial
+Slug: intro-4-flotaing-point
+Authors: Jon Williamson
+Summary: What can we expect from the STM32H750 hardware floating point unit performance wise?
+
+- [Introduction](#introduction)
+- [Integer? Floating? What?!](#integer--floating--what--)
+- [Absolute unit](#absolute-unit)
+- [Summing up](#summing-up)
+
 *Note: This article is relatively technical and contains some jargon. It's not critical that you understand it all to use **32blit** but it's a potentially interesting look at one aspect of the hardware!*
 
 Traditional advice for older hardware and micro-controllers would be to avoid floating point operations at all costs. They had to be emulated in software requiring many processor cycles, sometimes hundreds per operation, to complete.
