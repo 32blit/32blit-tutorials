@@ -1,0 +1,140 @@
+<html>
+<link rel="stylesheet" href="normalize.css">
+<link rel="stylesheet" href="skeleton.css">
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="https://use.typekit.net/oii8tlm.css">
+
+<nav>
+    <menu class="float side menu u-pull-left">
+        <li>
+            <a>&nbsp;</a>
+        </li>
+        <li>
+            <a href="/"><img src="logo.png" id="logo" alt="link to the PicoSystem front page."></a>
+        </li>
+        <li>
+            <a>&nbsp;</a>
+        </li>
+        <li><a href="https://shop.pimoroni.com/products/picosystem" title="Buy a PicoSystem">Buy</a></li>
+        <li><a href="/about" title="About the PicoSystem">About</a></li>
+        <li><a href="/games" title="Download games and demos for the PicoSystem">Games</a></li>
+        <li><a href="/developing" title="How to fevelop for the PicoSystem">Dev</a></li>
+        <li><a href="/resources" title="Download sprites, sounds and other resources for the PicoSystem">Assets</a></li>
+        <li><a href="/tutorials" title="Tutorials and articles">Tuts</a></li>
+        <li><a href="/docs" title="Docs for the game development APIs">Docs</a></li>
+        <li>
+            <a>&nbsp;</a>
+        </li>
+        <li><a href="/terms" title="Terms & conditions of use for this site">Terms</a></li>
+        <li><a href="/privacy" title="Pimoroni privacy policy covering this site">Privacy</a></li>
+    </menu>
+</nav>
+
+<article class="container">
+    <header>
+
+        <h1 id="cplusplus-00-getting-started">C++ 0. Getting Started</h1>
+        <p>
+            Posted on Fri 16 July 2021 in <a href="https://32blit.github.io/32blit-tutorials/category/c.html">C++</a>
+
+        </p>
+    </header>
+
+
+    <div>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#windows--visual-studio">Windows + Visual Studio</a>
+                <ul>
+                    <li><a href="#installing-visual-studio--requirements">Installing Visual Studio &amp; Requirements</a></li>
+                    <li><a href="#opening--configuring-your-project">Opening &amp; Configuring Your Project</a></li>
+                    <li><a href="#configuring-for-32blit-builds">Configuring For 32Blit Builds</a></li>
+                </ul>
+            </li>
+            <li><a href="#linux-macos--others">Linux, macOS &amp; Others</a></li>
+        </ul>
+        <h2 id="introduction">Introduction</h2>
+        <p>The 32blit SDK allows you to develop, debug and test your games on your computer. This tutorial will cover setting up Visual Studio on Windows.</p>
+        <h2 id="windows-visual-studio">Windows + Visual Studio</h2>
+        <p>To get started developing 32blit applications on Windows you'll need Visual Studio. Even if you plan to use VS Code eventually, you will need the Microsoft compilers included with Visual Studio to build &amp; test on Windows itself.</p>
+        <p>We'll be relying on Visual Studio's ability to open, configure and build a CMake project.</p>
+        <p>This guide is modified from the Windows/Visual Studio documentation in the 32blit SDK - https://github.com/32blit/32blit-sdk/blob/master/docs/Windows-VisualStudio.md</p>
+        <h3 id="installing-visual-studio-requirements">Installing Visual Studio &amp; Requirements</h3>
+        <p>You'll need:</p>
+        <ul>
+            <li>Visual Studio 2019 (preferably version 16.x) - <a href="https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&amp;rel=16">Visual Studio 2019 Community Edition</a></li>
+            <li>Python for Windows - <a href="https://www.python.org/ftp/python/3.9.6/python-3.9.6-amd64.exe">python-3.9.6-amd64.exe</a></li>
+            <li>The latest 32blit SDK release - <a href="https://github.com/32blit/32blit-sdk/releases/latest">Grab the Source code (zip)</a></li>
+        </ul>
+        <p>When installing Visual Studio, make sure you select:</p>
+        <ul>
+            <li>
+                <p>Desktop development with C++ - for Windows test builds</p>
+                <p><img alt="Visual Studio Install Windows Development" src="vs-install-windows-development.png" /></p>
+            </li>
+            <li>
+                <p>Linux development with C++ - with "Embedded and IoT development tools" - for 32blit device builds</p>
+                <p><img alt="Visual Studio Install Linux Development" src="vs-install-linux-development.png" /></p>
+            </li>
+        </ul>
+        <h3 id="opening-configuring-your-project">Opening &amp; Configuring Your Project</h3>
+        <p>Use the "Open a local folder" and navigate to the 32blit SDK</p>
+        <p><img alt="Visual Studio Open Local Folder" src="vs-open-local-folder.png" /></p>
+        <p>Visual Studio should detect the CMake project and start configuring it immediately.</p>
+        <p><img alt="Visual Studio CMake Configuring" src="vs-cmake-configuring.png" /></p>
+        <p>Once it's configured, select one of the non-install startup items from the list of debug targets.</p>
+        <p><img alt="Visual Studio CMake Startup Item" src="vs-startup-item.png" /></p>
+        <p>And hit F5 to launch.</p>
+        <p><img alt="Visual Studio Running Geometry" src="vs-running-geometry.png" /></p>
+        <h3 id="configuring-for-32blit-builds">Configuring For 32Blit Builds</h3>
+        <p>If you'd like to use Visual Studio to create builds that run <em>on</em> your 32Blit there are a few extra configuration steps.</p>
+        <ol>
+            <li>Open the CMake Settings by navigating to <code>Project</code> &gt; <code>Cmake Settings</code></li>
+            <li>Press "Add new configuration..." and select "IoT-Release".</li>
+            <li>Scroll down to "CMake toolchain file" and browse to <code>32blit.toolchain</code> in the root of the 32Blit SDK</li>
+            <li>(Optional) Change the configuration name to something like "32Blit-Release"</li>
+            <li>Save (Ctrl+S works in settings views)</li>
+            <li>Press "Edit JSON", scroll down to the new configuration and delete the contents of the <code>variables</code> array. The result should look like this:</li>
+        </ol>
+        <div class="highlight"><pre><span></span><code><span class="p">{</span>
+    <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;32Blit-Release&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;generator&quot;</span><span class="p">:</span> <span class="s2">&quot;Ninja&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;configurationType&quot;</span><span class="p">:</span> <span class="s2">&quot;Release&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;buildRoot&quot;</span><span class="p">:</span> <span class="s2">&quot;${projectDir}\\out\\build\\${name}&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;installRoot&quot;</span><span class="p">:</span> <span class="s2">&quot;${projectDir}\\out\\install\\${name}&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cmakeCommandArgs&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;buildCommandArgs&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;ctestCommandArgs&quot;</span><span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;inheritEnvironments&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="s2">&quot;gcc-arm&quot;</span> <span class="p">],</span>
+    <span class="nt">&quot;variables&quot;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="nt">&quot;intelliSenseMode&quot;</span><span class="p">:</span> <span class="s2">&quot;linux-gcc-arm&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;cmakeToolchain&quot;</span><span class="p">:</span> <span class="s2">&quot;[path...]/32blit-sdk/32blit.toolchain&quot;</span>
+  <span class="p">}</span>
+  </code></pre></div>
+
+        <ol start="7">
+            <li>To work around a bug in Visual Studio you should also add a tweak to <code>"environments"</code>. This ensures that Visual Studio can find <code>cmd.exe</code> when building the project, and that it also prefers its own copies of the ARM GCC
+                tools over those that might be elsewhere in your <code>PATH</code>:</li>
+        </ol>
+        <div class="highlight"><pre><span></span><code><span class="nt">&quot;environments&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span> <span class="nt">&quot;PATH&quot;</span><span class="p">:</span> <span class="s2">&quot;${env.ProgramFiles(x86)}/Microsoft Visual Studio/2019/Community/Linux/gcc_arm/bin/;${env.PATH}&quot;</span> <span class="p">}</span> <span class="p">]</span>
+  </code></pre></div>
+
+        <p>As before, select your preferred target from the drop-down list and build it. Note that the output will be a <code>.blit</code> file which you need to flash to your device using <code>32blit install game.blit</code>.</p>
+        <h2 id="linux-macos-others">Linux, macOS &amp; Others</h2>
+        <p>The community has kept an variety of platform documentation current for macoS, ChromeOS, Linux and Windows which you can find here: https://github.com/32blit/32blit-sdk/tree/master/docs</p>
+    </div>
+    <div class="tag-cloud">
+        <p>
+            <a href="https://32blit.github.io/32blit-tutorials/tag/c.html">c++</a>
+            <a href="https://32blit.github.io/32blit-tutorials/tag/tutorial.html">tutorial</a>
+        </p>
+    </div>
+
+
+
+
+
+</article>
+
+
+</html>

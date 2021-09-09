@@ -1,0 +1,52 @@
+#logo {
+    width: 10rem;
+    position: relative;
+    left: -4px;
+}
+
+article header {
+    padding-top: 5rem;
+}
+
+html,
+body {
+    background-color: #2e3333;
+    color: #dddddd;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+h7 {
+    font-family: dinosaur, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a {
+    color: #d9a657;
+}
+
+code {
+    background-color: #000000;
+    border-color: #000000
+}
+
+menu {
+    text-transform: uppercase;
+    position: fixed;
+    z-index: 1;
+}
+
+menu li {
+    font-family: dinosaur, sans-serif;
+    font-size: 1.75rem;
+    list-style: none;
+}
+
+menu li a {
+    text-decoration: none;
+}
