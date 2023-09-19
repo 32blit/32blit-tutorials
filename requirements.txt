@@ -1,5 +1,5 @@
 blinker==1.4
-certifi==2022.12.07
+certifi==2023.7.22
 docutils==0.17.1
 feedgenerator==1.9.1
 Jinja2==3.0.1
